@@ -1,6 +1,6 @@
 import pytest
 
-from algorithm_practice.arrays_algorithms import concatenate_lists, send_smallest_to_front 
+from algorithm_practice.arrays_algorithms import concatenate_lists, send_smallest_to_front, reverse_list 
 
 def test_concatenate_lists_non_empty_lists():
     list1 = ["a", "b", "c"]
@@ -58,8 +58,18 @@ def test_smallest_to_front_smallest_is_first():
     assert smallest == list1
 
 def test_smallest_to_front_empty_none_list():
+
     smallest1 = send_smallest_to_front([])
     smallest2 = send_smallest_to_front(None)
 
     assert smallest1 == []
     assert smallest2 == None
+
+def test_reverse_list_non_empty():
+    list1 = [1]
+    list2 = [1,2]
+    list3 = [1,2,3]
+
+    assert reverse_list(list1) == list1
+    assert reverse_list(list2) == [2,1]
+    assert reverse_list(list3) == [3,2,1] 

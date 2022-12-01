@@ -75,7 +75,17 @@ ie. [: :-1]. Return the same array. Don't forget edge cases!
 Example Input: [1, 2, 3, 4, 5, 6]
 Example Output: [6, 5, 4, 3, 2, 1]
 '''
+def reverse_list(lst):
+    if not lst:
+        return lst
 
+    list_len = len(lst)
+    for i in range(int(list_len/2)):
+        first = lst[i]
+        lst[i] = lst[list_len-i-1]
+        lst[list_len-i-1] = first
+
+    return lst
 '''
 Given an array and number, rotate the values of the array to the right by that number. Don't use slice. Return the same array. Don't forget edge cases!
 
