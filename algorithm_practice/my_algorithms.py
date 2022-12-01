@@ -1,23 +1,6 @@
 from collections.abc import Iterable  
 
 '''
-Compare the two list of the same lenght and return another list 
-with the indexes where differences are
-'''
-def compare_list_same_lenght(list_1,list_2):
-    if len(list_1)!= len(list_2) :
-        return None
-
-    diffence = list()
-    i = 0
-    for elem in list_1:
-        if elem != list_2[i]:
-            diffence.append(i)
-        i+=1
-
-    return diffence
-
-'''
 Given two arrays, create your own concatenation function. Return a new array containing the first array's values, then the second array's values. Try not to use built-in methods.  Don't forget edge cases!
 
 Example Input: ["a", "b", "c"], [1, 2, 3]
