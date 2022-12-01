@@ -1,6 +1,6 @@
 import pytest
 
-from algorithm_practice.my_algorithms import concatenate_lists, send_smallest_to_front 
+from algorithm_practice.arrays_algorithms import concatenate_lists, send_smallest_to_front 
 
 def test_concatenate_lists_non_empty_lists():
     list1 = ["a", "b", "c"]

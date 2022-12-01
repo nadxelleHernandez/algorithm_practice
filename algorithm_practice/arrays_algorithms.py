@@ -68,3 +68,24 @@ def send_smallest_to_front(lst):
     lst[0] = smallest
     return lst
     
+'''
+Given an array, reverse the order of values without using the built-in method reverse or slice, 
+ie. [: :-1]. Return the same array. Don't forget edge cases!
+
+Example Input: [1, 2, 3, 4, 5, 6]
+Example Output: [6, 5, 4, 3, 2, 1]
+'''
+
+'''
+Given an array and number, rotate the values of the array to the right by that number. Don't use slice. Return the same array. Don't forget edge cases!
+
+Example Input: [1, 2, 3, 4, 5], 2
+Example Output: [4, 5, 1, 2, 3]
+
+Example Input: [1, 2, 3, 4, 5], 5
+Example Output: [1, 2, 3, 4, 5]
+
+EXTRA CHALLENGE
+Try shifting to the left instead
+
+'''

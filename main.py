@@ -1,5 +1,5 @@
 #compare the two list and return another list with the indexes where differences are
-from algorithm_practice.my_algorithms import concatenate_lists,send_smallest_to_front
+from algorithm_practice.arrays_algorithms import concatenate_lists,send_smallest_to_front
 
 newlist = concatenate_lists(["a", "b", "c"], [1, 2, 3])
 print(newlist)
