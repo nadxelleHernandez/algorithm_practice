@@ -99,3 +99,39 @@ EXTRA CHALLENGE
 Try shifting to the left instead
 
 '''
+
+'''
+Write a function that determine if a string is a palindrome
+Don't accept numbers (raise exception)
+trim non alphanumeric characters
+'''
+def convert_list_to_string(list):
+    converted = ""
+    for elem in list:
+        converted += str(elem)
+
+    return converted
+
+def remove_given_chars(string, removables):
+    str_list = list(string)
+    for char in string:
+        if char in removables:
+            str_list.remove(char)
+
+    return convert_list_to_string(str_list)
+
+def is_palindrome(string):
+    if not string or type(string) is not str:
+        raise ValueError("is_palindrome received a number or an empty string")
+
+    work_str = remove_given_chars(string," !;:.,?`")
+    #work_str = string
+
+    str_len = len(work_str)
+    for i in range(int(str_len/2)):
+        if work_str[i].upper() != work_str[str_len-i-1].upper():
+            return False
+
+    return True
+
+    
