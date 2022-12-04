@@ -80,7 +80,7 @@ def reverse_list(lst):
         return lst
 
     list_len = len(lst)
-    for i in range(int(list_len/2)):
+    for i in range(list_len//2):
         first = lst[i]
         lst[i] = lst[list_len-i-1]
         lst[list_len-i-1] = first
@@ -128,7 +128,7 @@ def is_palindrome(string):
     #work_str = string
 
     str_len = len(work_str)
-    for i in range(int(str_len/2)):
+    for i in range(str_len//2):
         if work_str[i].upper() != work_str[str_len-i-1].upper():
             return False
 
