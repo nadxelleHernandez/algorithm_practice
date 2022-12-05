@@ -2,4 +2,4 @@
 from algorithm_practice.arrays_algorithms import is_palindrome
 
 print(is_palindrome("kayak"))
-print(is_palindrome("mM"))
+print(is_palindrome("racecar"))
