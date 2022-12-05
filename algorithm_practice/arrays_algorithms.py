@@ -87,7 +87,8 @@ def reverse_list(lst):
 
     return lst
 '''
-Given an array and number, rotate the values of the array to the right by that number. Don't use slice. Return the same array. Don't forget edge cases!
+Given an array and number, rotate the values of the array to the right by that number. 
+Don't use slice. Return the same array. Don't forget edge cases!
 
 Example Input: [1, 2, 3, 4, 5], 2
 Example Output: [4, 5, 1, 2, 3]
@@ -99,11 +100,15 @@ EXTRA CHALLENGE
 Try shifting to the left instead
 
 '''
+def rotate_list(lst, shift_by):
+    pass
 
 '''
 Write a function that determine if a string is a palindrome
-Don't accept numbers (raise exception)
-trim non alphanumeric characters
+Don't accept numbers type (raise exception)
+Accept iterables
+trim spaces at the ends
+Accepts special characters (in case we have a frase)
 '''
 def convert_list_to_string(list):
     converted = ""
@@ -121,11 +126,16 @@ def remove_given_chars(string, removables):
     return convert_list_to_string(str_list)
 
 def is_palindrome(string):
-    if not string or type(string) is not str:
-        raise ValueError("is_palindrome received a number or an empty string")
+    if string is None or not iterable(string):
+        raise ValueError("is_palindrome received an empty or non iterable argument")
 
-    work_str = remove_given_chars(string," !;:.,?`")
-    #work_str = string
+    if not string: 
+        return False
+
+    if type(str) is not str:
+        work_str = convert_list_to_string(string)
+    else:
+        work_str = string
 
     str_len = len(work_str)
     for i in range(str_len//2):

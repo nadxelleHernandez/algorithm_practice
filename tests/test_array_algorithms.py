@@ -1,6 +1,6 @@
 import pytest
 
-from algorithm_practice.arrays_algorithms import concatenate_lists, send_smallest_to_front, reverse_list 
+from algorithm_practice.arrays_algorithms import concatenate_lists, send_smallest_to_front, reverse_list, is_palindrome 
 
 def test_concatenate_lists_non_empty_lists():
     list1 = ["a", "b", "c"]
@@ -66,6 +66,7 @@ def test_smallest_to_front_empty_none_list():
     assert smallest2 == None
 
 def test_reverse_list_non_empty():
+
     list1 = [1]
     list2 = [1,2]
     list3 = [1,2,3]
@@ -73,3 +74,42 @@ def test_reverse_list_non_empty():
     assert reverse_list(list1) == list1
     assert reverse_list(list2) == [2,1]
     assert reverse_list(list3) == [3,2,1] 
+
+def test_is_palindrome_valid_input_same_case():
+    string1 = "kayak"
+    string2 = "kayak noon kayak"
+
+    result1 = is_palindrome(string1)
+    result2 = is_palindrome(string2)
+
+    assert result1
+    assert result2
+ 
+def test_is_palindrome_case_insensitive():
+    string = "Noon 1 noon"
+
+    result = is_palindrome(string)
+
+    assert result
+
+def test_is_palindrome_non_string_iterable_argument():
+    input_val = [1,2,3,2,1]
+
+    result = is_palindrome(input_val)
+
+    assert result
+
+def test_is_palindrome_none_argument_raise_exception():
+    with pytest.raises(ValueError):
+        is_palindrome(None)
+
+def test_is_palindrome_non_iterable_argument_raise_exception():
+    with pytest.raises(ValueError):
+        is_palindrome(2)
+
+def test_is_palindrome_no_string():
+    result = is_palindrome("")
+    assert not result
+
+
+
