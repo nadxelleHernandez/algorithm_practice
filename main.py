@@ -7,7 +7,7 @@ print(is_palindrome("racecar"))
 
     
 
-arr = [5, 8, 1, 3, 7, 5, 6]
+arr = [5, 8, 1, 3, 7, 5, 6, 5]
 num = 3
 print(find_nth_element(arr, num))
 

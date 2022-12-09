@@ -204,9 +204,6 @@ def pairs_with_given_sum(lst, target_sum):
     if not lst:
         return 0
 
-    if not number(target_sum):
-        raise TypeError("pairs_with_given_sum: target_sum must be a number")
-
     helper = dict()
     for num in lst:
         helper[num] = False

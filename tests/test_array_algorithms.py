@@ -1,6 +1,7 @@
 import pytest
 
-from algorithm_practice.arrays_algorithms import concatenate_lists, send_smallest_to_front, reverse_list, is_palindrome 
+from algorithm_practice.arrays_algorithms import (concatenate_lists, 
+     send_smallest_to_front, reverse_list, is_palindrome, pairs_with_given_sum )
 
 def test_concatenate_lists_non_empty_lists():
     list1 = ["a", "b", "c"]
@@ -110,6 +111,38 @@ def test_is_palindrome_non_iterable_argument_raise_exception():
 def test_is_palindrome_no_string():
     result = is_palindrome("")
     assert not result
+
+def test_pairs_with_given_sum_all_numerical_input_no_duplicates():
+    array = [3,2,8,-1,6]
+    sum = 5
+
+    result = pairs_with_given_sum(array,sum)
+
+    assert result == 2
+
+def test_pairs_with_given_sum_all_numerical_input_with_duplicates_one_pair():
+    arr = [5, 8, 1, 3, 7, 5, 6, 5]
+    sum = 10
+
+    result = pairs_with_given_sum(arr,sum)
+
+    assert result == 2
+
+def test_pairs_with_given_sum_all_numerical_input_with_duplicates_many_pairs():
+    arr = [5, 8, 1, 3, 7, 5, 6, 5, 5, 5]
+    sum = 10
+
+    result = pairs_with_given_sum(arr,sum)
+
+    assert result == 2
+
+def test_pairs_with_given_sum_empty_list():
+    arr = []
+    sum = 10
+
+    result = pairs_with_given_sum(arr,sum)
+
+    assert result == 0
 
 
 
