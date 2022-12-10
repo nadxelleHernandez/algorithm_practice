@@ -124,6 +124,15 @@ def test_pairs_with_given_sum_all_numerical_input_no_duplicates():
     assert result1 == 2
     assert result2 == 3
 
+def test_pairs_with_given_sum_all_numerical_no_duplicates_sum_is_2x_item():
+    list = [3,2,8,-1]
+    sum = 6
+
+    result = pairs_with_given_sum(list, sum)
+
+    assert result == 0
+
+
 def test_pairs_with_given_sum_all_numerical_input_with_duplicates_one_pair():
     arr = [5, 8, 1, 3, 7, 5, 6, 5]
     sum = 10

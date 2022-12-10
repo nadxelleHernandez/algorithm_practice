@@ -206,19 +206,26 @@ def pairs_with_given_sum(lst, target_sum):
 
     helper = dict()
     for num in lst:
-        helper[num] = False
+        if helper.get(num) is None: #save the duplicates
+            helper[num] = 1    
+        else:
+            helper[num] += 1
 
     pairs = 0
     for key in helper.keys():
         other_pair_key = target_sum - key
+        if other_pair_key == key: 
+            if helper[key] >= 2: #we can have a pair of duplicates
+                pairs+= 1
+                helper[key] = 0
+            else:
+                continue #the same number can't be used twice
+        
         other_pair_val = helper.get(other_pair_key)
-        if other_pair_val is not None and other_pair_val == False:
+        if other_pair_val is not None and other_pair_val > 0: #you can still use it
             pairs += 1
-            helper[key] = True
-            helper[other_pair_key] = True
-
-    #there is a bug here. If the target_sum is equal to the sum of the same number,
-    #even if it is not repeated it would return a pair (think how to fix it)
+            helper[key] = 0
+            helper[other_pair_key] = 0
 
     return pairs
 

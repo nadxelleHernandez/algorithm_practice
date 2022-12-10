@@ -13,9 +13,9 @@ print(find_nth_element(arr, num))
 
 print("Testing sum target")
 list = [3,2,8,-1]
-sum = 5
+sum = 6
 
 result = pairs_with_given_sum(list,sum)
 print(f"There are: {result} pairs")
-result = pairs_with_given_sum(arr,10)
+result = pairs_with_given_sum(arr,num)
 print(f"There are: {result} pairs")
