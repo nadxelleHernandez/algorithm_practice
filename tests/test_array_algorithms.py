@@ -113,12 +113,16 @@ def test_is_palindrome_no_string():
     assert not result
 
 def test_pairs_with_given_sum_all_numerical_input_no_duplicates():
-    array = [3,2,8,-1,6]
-    sum = 5
+    array1 = [3,2,8,-1,6]
+    array2 = [97, 51, 49, 35, 3, 65]
+    sum1 = 5
+    sum2 = 100
 
-    result = pairs_with_given_sum(array,sum)
+    result1 = pairs_with_given_sum(array1,sum1)
+    result2 = pairs_with_given_sum(array2,sum2)
 
-    assert result == 2
+    assert result1 == 2
+    assert result2 == 3
 
 def test_pairs_with_given_sum_all_numerical_input_with_duplicates_one_pair():
     arr = [5, 8, 1, 3, 7, 5, 6, 5]
