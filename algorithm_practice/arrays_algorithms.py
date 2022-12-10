@@ -217,5 +217,8 @@ def pairs_with_given_sum(lst, target_sum):
             helper[key] = True
             helper[other_pair_key] = True
 
+    #there is a bug here. If the target_sum is equal to the sum of the same number,
+    #even if it is not repeated it would return a pair (think how to fix it)
+
     return pairs
 
