@@ -102,13 +102,32 @@ Example Output: [1, 2, 3, 4, 5]
 EXTRA CHALLENGE
 Try shifting to the left instead
 def rotate_list(list, shift_by):
-  for i in range(shift_by):
-    list.insert(0, list.pop(-1))
-  return list
 '''
 def rotate_list(lst, shift_by):
-    pass
+    lst_len = len(lst)
+    if shift_by >= lst_len and shift_by%lst_len == 0:
+        return lst
 
+    for i in range(shift_by):
+        lst.insert(0,lst.pop(-1))
+
+    return lst
+
+'''
+Given an array, a start position, and an end position, 
+remove the values within that start-end range "in-place," 
+then return the original array. Don't use slice. Don't forget edge cases!
+
+Example Input: [5, 8, 1, 3, 7, 5, 6,10], 3, 6
+Example Output: [5, 8, 1, 10]
+
+Example Input: [4, 5, 6, 7, 10, 11, 12, 13], 5,7
+Example Output: [4, 5, 6, 7, 10]
+
+Example Input: [4, 5, 6, 7, 10, 11, 12, 13], 7,11
+Example Output: [4, 5, 6, 7, 10, 11, 12]
+
+'''
 '''
 Write a function that determine if a string is a palindrome
 Don't accept numbers type (raise exception)
@@ -192,15 +211,18 @@ def find_nth_element(arr, num):
     else:
         return check_num(check_list)
 
-'''Create a function named pairs_with_given_sum 
-It finds the number of pairs of numbers in a list which add up to a given target. 
-This function should take in a list of whole numbers and a target as parameters. 
-This function should have a return value of the integer of number of pairs.
-numbers:	[1, 2, 4, 5]  
-target: 6	
-Number of pairs (return value) : 2
-'''
+
 def pairs_with_given_sum(lst, target_sum):
+    """
+    It finds the number of pairs of numbers in a list which add up to a given target. 
+
+    This function should take in a list of whole numbers and a target as parameters. 
+    This function should have a return value of the integer of number of pairs.
+    numbers:	[1, 2, 4, 5]  
+    target: 6	
+    Number of pairs (return value) : 2
+
+    """
     if not lst:
         return 0
 
@@ -228,4 +250,41 @@ def pairs_with_given_sum(lst, target_sum):
             helper[other_pair_key] = 0
 
     return pairs
+
+def merge_ordered_lists(list1, list2):
+    if not list1:
+        return list2
+
+    if not list2:
+        return list1
+
+    merged = list()
+    i = 0
+    j = 0
+    list1_len = len(list1)
+    list2_len = len(list2)
+    while(True):
+        if i == list1_len:  #we finished looping through the first list
+            for index in range(j,list2_len):
+                merged.append(list2[index]) #we append the rest of the second list
+            break
+        if j == list2_len: #we finished looping through the second list
+            for index in range(i,list1_len):
+                merged.append(list1[index])
+            break
+        if list1[i] == list2[j]:
+            merged.append(list1[i]) #If one number is repeated in any of the list, it will be added that many times
+            i += 1
+            j += 1
+        elif list1[i] < list2[j]:
+            merged.append(list1[i])
+            i += 1
+        else: # the value on the second list is smaller
+            merged.append(list2[j])
+            j += 1
+
+    return merged
+
+
+
 
