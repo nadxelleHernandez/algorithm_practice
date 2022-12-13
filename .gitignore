@@ -1,2 +1,7 @@
 algorithm_practice/__pycache__/arrays_algorithms.cpython-310.pyc
 tests/__pycache__/test_array_algorithms.cpython-310-pytest-7.2.0.pyc
+tests/__pycache__/test_concatenate_lists.cpython-310-pytest-7.2.0.pyc
+tests/__pycache__/test_is_palindrome.cpython-310-pytest-7.2.0.pyc
+tests/__pycache__/test_pairs_with_given_sum.cpython-310-pytest-7.2.0.pyc
+tests/__pycache__/test_reverse_list.cpython-310-pytest-7.2.0.pyc
+tests/__pycache__/test_send_smallest_to_front.cpython-310-pytest-7.2.0.pyc
