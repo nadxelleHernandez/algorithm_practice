@@ -24,7 +24,7 @@ print(f"There are: {result} pairs")
 
 print("\nTesting merging ordered lists")
 list1 = ['-30', '-10','10']
-list2 = ['0', '1','4','5','5', '5']
+list2 = ['0', '1','4','5','11','15']
 
 result = merge_ordered_lists(list1, list2)
 

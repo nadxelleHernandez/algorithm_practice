@@ -275,7 +275,6 @@ def merge_ordered_lists(list1, list2):
         if list1[i] == list2[j]:
             merged.append(list1[i]) #If one number is repeated in any of the list, it will be added that many times
             i += 1
-            j += 1
         elif list1[i] < list2[j]:
             merged.append(list1[i])
             i += 1
