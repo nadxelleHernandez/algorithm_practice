@@ -1,13 +1,13 @@
 #compare the two list and return another list with the indexes where differences are
 from algorithm_practice.arrays_algorithms import (is_palindrome,
-      find_nth_element, pairs_with_given_sum, rotate_list, merge_ordered_lists)
+      find_nth_element, pairs_with_given_sum, rotate_list_n2, merge_ordered_lists)
 
 print(is_palindrome("kayak"))
 print(is_palindrome("racecar"))
 
 arr = [5, 8, 1, 3, 7, 6]
 num = 3  
-print(f"Rotated list: {rotate_list(arr,num)}")  
+print(f"Rotated list: {rotate_list_n2(arr,num)}")  
 
 arr = [5, 8, 1, 3, 7, 5, 6, 5]
 num = 9

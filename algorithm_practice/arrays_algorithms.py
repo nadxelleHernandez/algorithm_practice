@@ -103,7 +103,7 @@ EXTRA CHALLENGE
 Try shifting to the left instead
 def rotate_list(list, shift_by):
 '''
-def rotate_list(lst, shift_by):
+def rotate_list_n2(lst, shift_by):
     lst_len = len(lst)
     if shift_by >= lst_len and shift_by%lst_len == 0:
         return lst
@@ -112,6 +112,34 @@ def rotate_list(lst, shift_by):
         lst.insert(0,lst.pop(-1))
 
     return lst
+
+def rotate_list(lst, shift_by: int):
+    if not lst or not shift_by:
+        return lst
+
+    lst_len = len(lst)
+    shift = shift_by
+    if shift >= lst_len:
+        if shift%lst_len == 0:
+            return lst
+        else:
+            shift = shift_by%lst_len
+
+    new_list = [0 for x in range(lst_len)]
+
+    j = 0
+    for i in range(shift,lst_len):
+        new_list[i] = lst[j]
+        j += 1
+
+    for i in range(j):
+        new_list[i] = lst[j]
+        j += 1
+
+    return new_list
+
+
+    
 
 '''
 Given an array, a start position, and an end position, 
@@ -128,13 +156,7 @@ Example Input: [4, 5, 6, 7, 10, 11, 12, 13], 7,11
 Example Output: [4, 5, 6, 7, 10, 11, 12]
 
 '''
-'''
-Write a function that determine if a string is a palindrome
-Don't accept numbers type (raise exception)
-Accept iterables
-trim spaces at the ends
-Accepts special characters (in case we have a frase)
-'''
+
 def convert_list_to_string(list):
     converted = ""
     for elem in list:
@@ -151,13 +173,22 @@ def remove_given_chars(string, removables):
     return convert_list_to_string(str_list)
 
 def is_palindrome(string):
+    """
+    Write a function that determine if a string is a palindrome
+
+    Don't accept numbers type (raise exception)
+    Accept iterables
+    trim spaces at the ends
+    Accepts special characters (in case we have a frase)
+
+    """
     if string is None or not iterable(string):
         raise ValueError("is_palindrome received an empty or non iterable argument")
 
     if not string: 
         return False
 
-    if type(str) is not str:
+    if type(string) is not str:
         work_str = convert_list_to_string(string)
     else:
         work_str = string

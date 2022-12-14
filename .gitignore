@@ -7,3 +7,4 @@ tests/__pycache__/test_reverse_list.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_send_smallest_to_front.cpython-310-pytest-7.2.0.pyc
 algorithm_practice/API notes.txt
 tests/__pycache__/test_merge_ordered_lists.cpython-310-pytest-7.2.0.pyc
+tests/__pycache__/test_rotate_list.cpython-310-pytest-7.2.0.pyc
