@@ -4,7 +4,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
       
-    def add_first(self, value):
+    def add_top(self, value):
         new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
@@ -14,7 +14,7 @@ class LinkedList:
       current = self.head
 
       while current:
-        new_list.add_first(current.val)
+        new_list.add_top(current.val)
         current = current.next
 
       current = self.head
