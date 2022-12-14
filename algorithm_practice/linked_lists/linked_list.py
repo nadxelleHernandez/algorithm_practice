@@ -39,6 +39,18 @@ class LinkedList:
         
         return None
 
+    def add_last(self, value):
+        current = self.head
+        node = Node(value)
+        
+        if current is not None: 
+            while current.next:
+                current = current.next
+                
+            current.next = node
+        else:
+            self.head = node
+
     def palindrome(self):
         new_list = LinkedList()
         current = self.head

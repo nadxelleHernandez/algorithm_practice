@@ -37,3 +37,5 @@ test_list.add_top('a')
 test_list.add_top('d')
 test_list.add_top('a')
 print(test_list.palindrome())
+
+test_list.add_last('a')
