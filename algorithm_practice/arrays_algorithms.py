@@ -272,11 +272,8 @@ def merge_ordered_lists(list1, list2):
             for index in range(i,list1_len):
                 merged.append(list1[index])
             break
-        if list1[i] == list2[j]:
-            merged.append(list1[i]) #If one number is repeated in any of the list, it will be added that many times
-            i += 1
-        elif list1[i] < list2[j]:
-            merged.append(list1[i])
+        if list1[i] <= list2[j]:
+            merged.append(list1[i]) #Each number will be added no matter if they are duplicates
             i += 1
         else: # the value on the second list is smaller
             merged.append(list2[j])
