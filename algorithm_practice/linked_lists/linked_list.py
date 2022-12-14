@@ -15,6 +15,30 @@ class LinkedList:
             
         return self.head.val
 
+    def contains(self, value):
+        current = self.head
+
+        while current:
+            if current.val == value:
+                return True
+            current = current.next
+    
+        return False
+
+    def get_at_index(self, index: int):
+        if index < 0:
+            raise ValueError("Index must be positive")
+            
+        current = self.head
+        i = 0
+        while current:
+            if i == index:
+                return current.val
+            current = current.next
+            i += 1
+        
+        return None
+
     def palindrome(self):
         new_list = LinkedList()
         current = self.head
