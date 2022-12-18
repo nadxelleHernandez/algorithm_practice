@@ -1,6 +1,6 @@
 #compare the two list and return another list with the indexes where differences are
 from algorithm_practice.arrays_algorithms import (is_palindrome,
-      find_nth_element, pairs_with_given_sum, rotate_list_n2, merge_ordered_lists)
+      get_n_largest, pairs_with_given_sum, rotate_list_n2, merge_ordered_lists)
 from algorithm_practice.linked_lists.linked_list import LinkedList
 
 print(is_palindrome("kayak"))
@@ -11,8 +11,9 @@ num = 3
 print(f"Rotated list: {rotate_list_n2(arr,num)}")  
 
 arr = [5, 8, 1, 3, 7, 5, 6, 5]
-num = 9
-#print(find_nth_element(arr, num))
+num = 5
+n = get_n_largest(arr,num)
+print(f"\n Getting the {num} largest from {arr} is \n {n}")
 
 print("Testing sum target")
 list = [3,2,8,-1]

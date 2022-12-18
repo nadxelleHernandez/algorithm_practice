@@ -200,16 +200,24 @@ def is_palindrome(string):
 
     return True
 
-def get_n_largest(list, n):
-    list.sort()
-    #print(list)
-    #lists = []
-    #for num in list:
-    # if num not in lists:
-        #  lists.append(num)
-    if len(list) < n:
+def get_n_largest(lst, n):
+    """First solution, O(N Log N) time O(n) space"""
+    lst.sort()
+    new_list = list()
+    
+    list_len = len (lst)
+    for i in range(list_len-1):
+        curr = lst[i]
+        next = lst[i+1]
+        if curr != next:
+            new_list.append(curr)
+
+    if lst[-1] != lst[-2]:
+        new_list.append(lst[-1]) 
+
+    if len(new_list) < n:
         return None
-    return list[-n]
+    return new_list[-n]
 
 def in_place_remove(list, start, end):
     removes = (end - start) + 1
@@ -311,7 +319,3 @@ def merge_ordered_lists(list1, list2):
             j += 1
 
     return merged
-
-
-
-
