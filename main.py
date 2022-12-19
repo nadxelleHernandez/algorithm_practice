@@ -2,6 +2,7 @@
 from algorithm_practice.arrays_algorithms import (is_palindrome,
       get_n_largest, pairs_with_given_sum, rotate_list_n2, merge_ordered_lists)
 from algorithm_practice.linked_lists.linked_list import LinkedList
+from algorithm_practice.linked_lists.d_linked_list import DLinkedList
 
 print(is_palindrome("kayak"))
 print(is_palindrome("racecar"))
@@ -40,3 +41,18 @@ test_list.add_top('a')
 print(test_list.palindrome())
 
 test_list.add_last('a')
+
+print("\n Testing palindrome in a Linked list: a, d, a nodes")
+my_list = DLinkedList()
+my_list.add_top('a')
+my_list.add_last('b')
+my_list.add_top('c')
+
+
+my_list.add_last('d')
+
+
+print(my_list)
+print(my_list.contains_from_head('a'))
+print(my_list.contains_from_tail('i'))
+

@@ -51,6 +51,16 @@ class LinkedList:
         else:
             self.head = node
 
+    def __repr__(self) -> str:
+        current = self.head
+        repre = ""
+
+        while current:
+            repre += str(current.val) + "-> "
+            current = current.next
+
+        return repre
+
     def palindrome(self):
         new_list = LinkedList()
         current = self.head

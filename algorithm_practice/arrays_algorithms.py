@@ -200,9 +200,23 @@ def is_palindrome(string):
 
     return True
 
-def get_n_largest(lst, n):
+def get_n_largest_link(lst,n):
+    n_largest = None
+    #explore the list creating a linked list size n with the largest
+    #insert them ordering them without duplicating
+    #start a largest var with the first element of the list
+    #insert it to the linked list
+    #start a for cicle through the list
+    #if the len of list is less than n 
+    # insert i[i] it in the right place of the list to keep it ordered
+
+    #finally return the n_largest from the list
+
+    return n_largest
+
+def get_n_largest(array, n):
     """First solution, O(N Log N) time O(n) space"""
-    lst.sort()
+    lst = sorted(array)
     new_list = list()
     
     list_len = len (lst)
