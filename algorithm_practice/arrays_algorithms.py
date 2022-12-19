@@ -216,6 +216,9 @@ def get_n_largest_link(lst,n):
 
 def get_n_largest(array, n):
     """First solution, O(N Log N) time O(n) space"""
+    if not array or n > len(array):
+        return None
+
     lst = sorted(array)
     new_list = list()
     
@@ -234,11 +237,13 @@ def get_n_largest(array, n):
     return new_list[-n]
 
 def in_place_remove(list, start, end):
-    removes = (end - start) + 1
-    while removes > 0:
-        list.pop(start)
-        removes -= 1
+
     return list
+    # removes = (end - start) + 1
+    # while removes > 0:
+    #     list.pop(start)
+    #     removes -= 1
+    # return list
 
 '''Other way to resolve get the n largest'''
 def check_num(arr):
