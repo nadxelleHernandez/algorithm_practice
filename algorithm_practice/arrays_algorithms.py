@@ -236,14 +236,28 @@ def get_n_largest(array, n):
         return None
     return new_list[-n]
 
-def in_place_remove(list, start, end):
+def in_place_remove(lst, start, end):
+    if not lst:
+        return []
 
-    return list
-    # removes = (end - start) + 1
-    # while removes > 0:
-    #     list.pop(start)
-    #     removes -= 1
-    # return list
+    lst_len = len(lst)
+    # handle negative start ends, calculate from there where to start
+    if start < 0:
+        start = lst_len + start
+
+    if end < 0:
+        end =  lst_len + end
+
+    if start > lst_len:
+        return lst
+
+    if end >= lst_len:
+        end = lst_len-1
+
+    for i in range(end,start-1,-1):
+        lst.pop(i)
+
+    return lst
 
 '''Other way to resolve get the n largest'''
 def check_num(arr):
