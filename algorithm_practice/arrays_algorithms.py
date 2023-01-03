@@ -1,16 +1,34 @@
 from collections.abc import Iterable  
 
 '''
-Given two arrays, create your own concatenation function. Return a new array containing the first array's values, then the second array's values. Try not to use built-in methods.  Don't forget edge cases!
+Given two arrays, create your own concatenation function. 
+Return a new array containing the first array's values, then the second array's values.
+Try not to use built-in methods.  Don't forget edge cases!
 
 Example Input: ["a", "b", "c"], [1, 2, 3]
 Example Output: ["a", "b", "c", 1, 2, 3]
 '''
+def concatenate_array(arr1, arr2):
+    if not arr1:
+        return arr2
+    if not arr2:
+        return arr1
+
+    if not iterable(arr1) or not iterable(arr2):
+        return [arr1,arr2]
+
+    concatenated = [i for i in arr1]
+    concatenated += arr2
+
+    return concatenated
+
+
 def iterable(obj):
     return isinstance(obj,Iterable)
 
 def number(obj):
     return type(obj) is int or type(obj) is float
+    
 
 def concatenate_lists(lst1, lst2):
     if not lst1 and not lst2:
@@ -44,17 +62,19 @@ def concatenate_lists(lst1, lst2):
 
     return added_lists
 
-'''
-Given an array, find the smallest value and move it to the front of the array. Return the same array. Try not to use built-in methods. Don't forget edge cases!
 
-Example Input: [3, 4, 2, 9, 1, 8, 7, 6]
-Example Output: [1, 3, 4, 2, 9, 8, 7, 6]
-
-Example Input: [3, 4, 2, 9, 1, 8, 1, 7, 6]
-Example Output: [1, 3, 4, 2, 9, 8, 1, 7, 6]
-
-'''
 def send_smallest_to_front(lst):
+    """
+    Given an array, find the smallest value and move it to the front of the array. Return the same array. 
+    Try not to use built-in methods. Don't forget edge cases!
+
+    Example Input: [3, 4, 2, 9, 1, 8, 7, 6]
+    Example Output: [1, 3, 4, 2, 9, 8, 7, 6]
+
+    Example Input: [3, 4, 2, 9, 1, 8, 1, 7, 6]
+    Example Output: [1, 3, 4, 2, 9, 8, 1, 7, 6]
+
+    """
     if not lst:
         return lst
 
@@ -71,14 +91,15 @@ def send_smallest_to_front(lst):
     lst[0] = smallest
     return lst
     
-'''
-Given an array, reverse the order of values without using the built-in method reverse or slice, 
-ie. [: :-1]. Return the same array. Don't forget edge cases!
 
-Example Input: [1, 2, 3, 4, 5, 6]
-Example Output: [6, 5, 4, 3, 2, 1]
-'''
 def reverse_list(lst):
+    """
+    Given an array, reverse the order of values without using the built-in method reverse or slice, 
+    ie. [: :-1]. Return the same array. Don't forget edge cases!
+
+    Example Input: [1, 2, 3, 4, 5, 6]
+    Example Output: [6, 5, 4, 3, 2, 1]
+    """
     if not lst:
         return lst
 
@@ -89,6 +110,7 @@ def reverse_list(lst):
         lst[list_len-i-1] = first
 
     return lst
+
 '''
 Given an array and number, rotate the values of the array to the right by that number. 
 Don't use slice. Return the same array. Don't forget edge cases!
@@ -137,25 +159,6 @@ def rotate_list(lst, shift_by: int):
         j += 1
 
     return new_list
-
-
-    
-
-'''
-Given an array, a start position, and an end position, 
-remove the values within that start-end range "in-place," 
-then return the original array. Don't use slice. Don't forget edge cases!
-
-Example Input: [5, 8, 1, 3, 7, 5, 6,10], 3, 6
-Example Output: [5, 8, 1, 10]
-
-Example Input: [4, 5, 6, 7, 10, 11, 12, 13], 5,7
-Example Output: [4, 5, 6, 7, 10]
-
-Example Input: [4, 5, 6, 7, 10, 11, 12, 13], 7,11
-Example Output: [4, 5, 6, 7, 10, 11, 12]
-
-'''
 
 def convert_list_to_string(list):
     converted = ""
@@ -237,6 +240,20 @@ def get_n_largest(array, n):
     return new_list[-n]
 
 def in_place_remove(lst, start, end):
+    """
+    Given an array, a start position, and an end position, remove the values within that start-end range "in-place," 
+    then return the original array. Don't use slice. Don't forget edge cases!
+
+    Example Input: [5, 8, 1, 3, 7, 5, 6,10], 3, 6
+    Example Output: [5, 8, 1, 10]
+
+    Example Input: [4, 5, 6, 7, 10, 11, 12, 13], 5,7
+    Example Output: [4, 5, 6, 7, 10]
+
+    Example Input: [4, 5, 6, 7, 10, 11, 12, 13], 7,11
+    Example Output: [4, 5, 6, 7, 10, 11, 12]
+
+    """
     if not lst:
         return []
 
