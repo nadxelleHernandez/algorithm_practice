@@ -13,13 +13,13 @@ class LinkedList:
         if not self.head:
             return None
             
-        return self.head.val
+        return self.head.value
 
     def contains(self, value):
         current = self.head
 
         while current:
-            if current.val == value:
+            if current.value == value:
                 return True
             current = current.next
     
@@ -33,7 +33,7 @@ class LinkedList:
         i = 0
         while current:
             if i == index:
-                return current.val
+                return current.value
             current = current.next
             i += 1
         
@@ -56,7 +56,7 @@ class LinkedList:
         repre = ""
 
         while current:
-            repre += str(current.val) + "-> "
+            repre += str(current.value) + "-> "
             current = current.next
 
         return repre
@@ -66,16 +66,54 @@ class LinkedList:
         current = self.head
 
         while current:
-            new_list.add_top(current.val)
+            new_list.add_top(current.value)
             current = current.next
 
         current = self.head
         current_new_list = new_list.head
         while current and current_new_list:
-            if current.val != current_new_list.val:
+            if current.value != current_new_list.value:
                 return False
 
             current = current.next
             current_new_list = current_new_list.next
 
         return True
+
+    def rotate_list(self, k):
+        if self.head is None:
+            return None
+
+        if k <= 0:
+            return self.head
+
+        current = self.head
+        lenght = 0
+        tail = None
+        while current:
+            lenght += 1
+            if current.next is None:
+                tail = current
+            current = current.next
+
+        if k >= lenght:
+            k = k % lenght
+
+        if k == 0:
+            return self.head
+
+        shifted = self.head
+        current = shifted.next
+        shift = 1
+        while current.next:
+            if shift == k:
+                shifted = shifted.next
+            else:
+                shift += 1
+            current = current.next
+
+        tail.next = self.head
+        self.head = shifted.next
+        shifted.next = None
+
+        return self.head

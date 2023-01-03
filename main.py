@@ -74,3 +74,15 @@ print(concatenate_array(arr,arr2))
 # print(my_list.contains_from_head('a'))
 # print(my_list.contains_from_tail('i'))
 
+
+test_list = LinkedList()
+test_list.add_last('a')
+test_list.add_last('b')
+test_list.add_last('c')
+test_list.add_last('d')
+test_list.add_last('e')
+print(f"\n Testing rotating in a Linked list: {test_list}")
+
+test_list.rotate_list(4)
+print(test_list)
+
