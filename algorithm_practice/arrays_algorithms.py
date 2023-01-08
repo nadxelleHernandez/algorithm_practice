@@ -369,3 +369,63 @@ def merge_ordered_lists(list1, list2):
             j += 1
 
     return merged
+
+def reshape_matrix(matrix, r, c):
+    """You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing the number of rows and number of columns of the wanted reshaped matrix, respectively.
+        The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing order as they were.
+        If the 'reshape' operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.
+            Example 1:
+            Input: 
+            nums = 
+            [[1,2],
+            [3,4]]
+            r = 1, c = 4
+
+            Output: 
+            [[1,2,3,4]]"""
+
+    if not matrix:
+        return []
+
+    if r <= 0 or c <=0:
+        return matrix
+
+    total_elements = 0
+    is_matrix = True
+    if type(matrix[0]) is list:
+        total_elements = len(matrix) * len(matrix[0])
+    else:
+        total_elements = len(matrix)
+        is_matrix = False
+
+    if r * c != total_elements:
+        return matrix
+
+    i = 0
+    actual_row = []
+    new_matrix = []
+    if is_matrix:
+        for row in matrix:
+            for col in row:
+                if i < c:
+                    actual_row.append(col)
+                    i += 1
+                else:
+                    new_matrix.append(actual_row)
+                    actual_row = list()
+                    actual_row.append(col)
+                    i = 1
+    else:
+        for col in matrix:
+            if i < c:
+                actual_row.append(col)
+                i += 1
+            else:
+                new_matrix.append(actual_row)
+                actual_row = list()
+                actual_row.append(col)
+                i = 1
+                
+    new_matrix.append(actual_row)
+    return new_matrix
+
