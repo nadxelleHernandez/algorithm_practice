@@ -16,3 +16,5 @@ algorithm_practice/hash_tables/__pycache__/hash_algorithms.cpython-310.pyc
 algorithm_practice/linked_lists/__pycache__/d_linked_list.cpython-310.pyc
 algorithm_practice/linked_lists/__pycache__/d_linked_list.cpython-310.pyc
 tests/__pycache__/test_reshape_matrix.cpython-310-pytest-7.2.0.pyc
+algorithm_practice/__pycache__/recursion.cpython-310.pyc
+tests/__pycache__/test_recursion.cpython-310-pytest-7.2.0.pyc
