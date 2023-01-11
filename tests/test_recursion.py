@@ -1,5 +1,5 @@
 from algorithm_practice.recursion import (factorial,reverse,bunny,
-               is_nested_parens,search)
+               is_nested_parens,search, is_palindrome,digit_match)
 import pytest
 
 def test_factorial_zero():
@@ -72,3 +72,44 @@ def test_search_success_first_item():
 
 def test_search_not_found():
     assert not search(["a", "b", "c"], "🌈")
+
+def test_is_palindrome_success():
+    assert is_palindrome("racecar")
+
+
+def test_is_palindrome_not_palindrome():
+    assert not is_palindrome("raecar")
+
+def test_digit_match_large_inputs():
+    apples = 1072503891
+    oranges =  62530841
+
+    assert digit_match(apples, oranges) == 4
+
+
+def test_digit_match_no_matches():
+    apples = 0
+    oranges = 62530841
+
+    assert digit_match(apples, oranges) == 0
+
+
+def test_digit_match_clustered_matches():
+    apples = 841
+    oranges = 62530841
+
+    assert digit_match(apples, oranges) == 3
+
+
+def test_digit_match_single_digits():
+    apples = 0
+    oranges = 0
+
+    assert digit_match(apples, oranges) == 1
+
+
+def test_digit_match_small_inputs():
+    apples = 10
+    oranges = 20
+
+    assert digit_match(apples, oranges) == 1
