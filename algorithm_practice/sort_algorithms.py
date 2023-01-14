@@ -1,3 +1,5 @@
+from algorithm_practice.arrays_algorithms import merge_ordered_lists
+
 def insert_sort(lst):
     if not lst:
         return []
@@ -55,3 +57,22 @@ def sort_by_length(string):
                 i -= 1
         last_ordered_i += 1 
     return words
+
+def merge_sort(array):
+    if not array:
+        return []
+        
+    array_len = len(array)
+
+    if array_len == 1:
+        return array
+
+    half_point = array_len // 2
+
+    left_side = array[:half_point]
+    right_side = array[half_point:]
+
+    left_side = merge_sort(left_side)
+    right_side = merge_sort(right_side)
+
+    return merge_ordered_lists(left_side,right_side)

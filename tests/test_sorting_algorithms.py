@@ -1,4 +1,4 @@
-from algorithm_practice.sort_algorithms import sort_by_length, insert_sort
+from algorithm_practice.sort_algorithms import sort_by_length, insert_sort, merge_sort
 
 def test_insert_sort():
     lst = [3,0,5,8,9,1]
@@ -27,3 +27,9 @@ def test_sort_by_length_checks_smallest_word_last():
 def test_sort_by_length_equal_length_maintains_order():
     assert sort_by_length("words of equal length") == [
         "of", "words", "equal", "length"]
+
+def test_merge_sort_valid_input():
+    array = [3,0,5,8,9,1,5,10,4]
+    sorted = merge_sort(array)
+
+    assert sorted == [0,1,3,4,5,5,8,9,10]
