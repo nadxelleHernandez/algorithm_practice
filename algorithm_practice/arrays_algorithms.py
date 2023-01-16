@@ -444,7 +444,40 @@ def kth_missing_positive_number(array, k):
             positive integer is 6.
     """
         
+    if k < 1:
+        return None
+
+    if not array:
+        return k
+
+    if array[0] < 1:
+        return None
+
+    length = len(array)
+
+    if array[0] > k:
+        return k
+
+    if array[-1] == length:
+        return length + k
+
+    missing_count = array[0]-1
     
+    j = 0
+    i = array[0]
+    missing = 0
+    while missing_count != k:
+        if j < length and array[j] == i:
+            j += 1
+        else:
+            missing_count += 1
+            missing = i
+            if j == length: #I'm at the last elemnet of the list. Can calculate the Kth element
+                missing = i + k - missing_count
+                break
+        i += 1   
+
+    return missing
+
     
-    pass
 
