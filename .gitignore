@@ -21,3 +21,6 @@ tests/__pycache__/test_recursion.cpython-310-pytest-7.2.0.pyc
 algorithm_practice/__pycache__/sort_algorithms.cpython-310.pyc
 tests/__pycache__/test_sorting_algorithms.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_kth_missing_positive_number.cpython-310-pytest-7.2.0.pyc
+algorithm_practice/binary_trees/__pycache__/tree_node.cpython-310.pyc
+algorithm_practice/binary_trees/__pycache__/tree.cpython-310.pyc
+tests/__pycache__/test_binary_tree.cpython-310-pytest-7.2.0.pyc
