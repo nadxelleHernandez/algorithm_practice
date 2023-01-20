@@ -5,6 +5,29 @@ class Tree:
     def __init__(self, node=None):
         self.root = node 
 
+    #Define base case
+    def find_helper(self, current, value):
+        # base case1: when we find the value 
+        # base case2: when we get to the leaf node and still didn't find the value means the value doesn't exist 
+        if not current:
+            return None
+
+        if current.value == value:
+            return current
+
+        if value < current.value: 
+            current = self.find_helper(current.left , value) 
+        else:
+            current = self.find_helper(current.right , value) 
+
+        return current
+
+    def find_recursive(self, value):
+        if not self.root:
+            return None 
+        return self.find_helper(self.root, value)
+
+        
     #Look for a node iterative way
     def find(self, key):  
         current = self.root

@@ -1,6 +1,30 @@
 from algorithm_practice.binary_trees.tree import Tree
 from algorithm_practice.binary_trees.tree_node import TreeNode
 
+def test_find_node_recursively():
+    tree = Tree()
+    tree.add(17)
+    tree.add(14)
+    tree.add(20)
+    tree.add(19)
+    tree.add(52)
+
+    node = tree.find_recursive(19)
+
+    assert node.value == 19
+
+def test_find_node_recursively_not_there():
+    tree = Tree()
+    tree.add(17)
+    tree.add(14)
+    tree.add(20)
+    tree.add(19)
+    tree.add(52)
+
+    node = tree.find_recursive(11)
+
+    assert node == None
+
 def test_add_node_one_node_tree():
     root = TreeNode(3)
     tree = Tree(root)
