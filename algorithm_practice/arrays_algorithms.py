@@ -479,5 +479,17 @@ def kth_missing_positive_number(array, k):
 
     return missing
 
-    
+def max_profit(stocks):
+    if not stocks:
+        return 0
 
+    total_profit = 0
+    i = 1
+    length = len(stocks)
+    while i < length:
+        if stocks[i-1] < stocks[i]:
+            profit = stocks[i] - stocks[i-1]
+            total_profit += profit
+        i += 1
+
+    return total_profit
