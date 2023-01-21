@@ -1,3 +1,9 @@
+algorithm_practice/__pycache__
+algorithm_practice/binary_trees/__pycache__
+algorithm_practice/hash_tables/__pycache__
+algorithm_practice/linked_lists/__pycache__
+algorithm_practice/tests/__pycache__
+
 algorithm_practice/__pycache__/arrays_algorithms.cpython-310.pyc
 tests/__pycache__/test_array_algorithms.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_concatenate_lists.cpython-310-pytest-7.2.0.pyc
@@ -5,7 +11,6 @@ tests/__pycache__/test_is_palindrome.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_pairs_with_given_sum.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_reverse_list.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_send_smallest_to_front.cpython-310-pytest-7.2.0.pyc
-algorithm_practice/API notes.txt
 tests/__pycache__/test_merge_ordered_lists.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_rotate_list.cpython-310-pytest-7.2.0.pyc
 algorithm_practice/linked_lists/__pycache__/__init__.cpython-310.pyc
