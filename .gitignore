@@ -30,3 +30,5 @@ algorithm_practice/binary_trees/__pycache__/tree_node.cpython-310.pyc
 algorithm_practice/binary_trees/__pycache__/tree.cpython-310.pyc
 tests/__pycache__/test_binary_tree.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_max_profit.cpython-310-pytest-7.2.0.pyc
+algorithm_practice/graphs/__pycache__/graph.cpython-310.pyc
+tests/__pycache__/test_graphs.cpython-310-pytest-7.2.0.pyc
