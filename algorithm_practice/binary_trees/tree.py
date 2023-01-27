@@ -171,5 +171,21 @@ class Tree:
         self.postorder_recursive(self.root, nodes)
         return nodes
 
+    def get_height(self):
+        return self.height_recursive(self.root,0)
+
+    def height_recursive(self, current_node, height):
+        if not current_node:
+            return height
+
+        height += 1
+        max_height_left = self.height_recursive(current_node.left, height)
+        max_height_right = self.height_recursive(current_node.right, height)
+
+        if max_height_left > max_height_right:
+            return max_height_left
+        
+        return max_height_right
+
 
 

@@ -78,4 +78,20 @@ def test_preorder_function():
     assert len(nodes) == 5
     assert nodes == [17,14,20,19,52]
 
+def test_height_more_than_one_node():
+    tree = Tree()
+    tree.add(22)
+    tree.add(10)
+    tree.add(6)
+    tree.add(3)
+    tree.add(8)
+    tree.add(12)
+    tree.add(43)
+    tree.add(38)
+    tree.add(55)
+
+    height = tree.get_height()
+
+    assert height == 4
+
 
