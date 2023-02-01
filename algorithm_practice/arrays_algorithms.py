@@ -493,3 +493,48 @@ def max_profit(stocks):
         i += 1
 
     return total_profit
+
+#O(n)2
+def has_balanced_sum(array):
+    if not array:
+        return False
+
+    array_len = len(array)
+
+    if array_len==1:
+        return True
+
+    right_sum = 0
+    left_sum = 0
+    for i in range(1,array_len):
+        for j in range(i):
+            right_sum+=array[j]
+        for j in range(i,array_len):
+            left_sum+=array[j]
+        if right_sum==left_sum:
+            return True
+        right_sum = 0
+        left_sum = 0
+    return False
+
+def get_balanced_sum_index(array):
+    if not array:
+        return None
+
+    array_len = len(array)
+
+    if array_len==1:
+        return 0
+
+    right_sum = 0
+    left_sum = 0
+    for i in range(1,array_len-1):
+        for j in range(i):
+            right_sum+=array[j]
+        for j in range(i+1,array_len):
+            left_sum+=array[j]
+        if right_sum==left_sum:
+            return i
+        right_sum = 0
+        left_sum = 0
+    return None  
