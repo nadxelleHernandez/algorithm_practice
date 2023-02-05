@@ -61,3 +61,34 @@ class Graph:
 
         return visited
 
+    def bfs_with_tracker(self, start_node, visited_dict):
+
+        queue = deque()
+        visited = []
+        queue.append(start_node)
+        visited.append(start_node)
+        visited_dict[start_node]= True
+        while queue:
+            current = queue.popleft()
+            neighbors = self.adjacency_dict[current]
+            for node in neighbors:
+                if visited_dict.get(node) is None:
+                    visited.append(node)
+                    visited_dict[node] = True
+                    queue.append(node)
+
+        return visited
+
+    def components(self):
+        if not self.adjacency_dict:
+            return []
+
+        components_list = []
+        visited_dict = {}
+        for key_node in self.adjacency_dict:
+            if visited_dict.get(key_node) is None:
+                visited = self.bfs_with_tracker(key_node,visited_dict)
+                components_list.append(visited)
+
+        return components_list
+
