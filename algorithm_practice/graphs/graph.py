@@ -62,7 +62,6 @@ class Graph:
         return visited
 
     def bfs_with_tracker(self, start_node, visited_dict):
-
         queue = deque()
         visited = []
         queue.append(start_node)
