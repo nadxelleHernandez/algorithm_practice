@@ -537,4 +537,37 @@ def get_balanced_sum_index(array):
             return i
         right_sum = 0
         left_sum = 0
-    return None  
+    return None
+
+def check_substring(substring: str) -> int:
+    used_chars = set()
+    current_len = 0
+    longest = 0
+    for char in substring:
+        if char in used_chars:
+            current_len = 1
+        else:
+            used_chars.add(char)
+            current_len += 1
+        if current_len > longest:
+            longest = current_len
+    
+    return longest
+        
+
+def lenght_of_longest_substring(string: str) -> int:
+    slen = len(string)
+    if slen == 0:
+        return 0
+
+    if slen == 1:
+        return 1
+
+    longest = 0
+    
+    for i in range(slen):
+        i_lenght = check_substring(string[i:])
+        if i_lenght > longest:
+            longest = i_lenght
+
+    return longest
