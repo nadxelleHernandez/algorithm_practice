@@ -1,4 +1,5 @@
-from collections.abc import Iterable  
+from collections.abc import Iterable 
+from collections import Counter 
 
 '''
 Given two arrays, create your own concatenation function. 
@@ -539,15 +540,16 @@ def get_balanced_sum_index(array):
         left_sum = 0
     return None
 
-def check_substring(substring: str) -> int:
+def check_substring(string: str, init: int) -> int:
     used_chars = set()
     current_len = 0
     longest = 0
-    for char in substring:
-        if char in used_chars:
+    slen = len(string)
+    for i in range(init,slen):
+        if string[i] in used_chars:
             current_len = 1
         else:
-            used_chars.add(char)
+            used_chars.add(string[i])
             current_len += 1
         if current_len > longest:
             longest = current_len
@@ -566,8 +568,36 @@ def lenght_of_longest_substring(string: str) -> int:
     longest = 0
     
     for i in range(slen):
-        i_lenght = check_substring(string[i:])
+        i_lenght = check_substring(string,i)
         if i_lenght > longest:
             longest = i_lenght
 
     return longest
+
+def lenght_of_longest_substring_efficient(string: str) ->int:
+    slen = len(string)
+    if slen == 0:
+        return 0
+
+    if slen == 1:
+        return 1
+
+    chars = Counter()
+    longest = 0
+    r = l = 0
+    while r < slen:
+        r_char = string[r]
+        chars[r_char] += 1
+
+        while chars[r_char] > 1:
+            l_char = string[l]
+            chars[l_char] -= 1
+            l += 1
+        longest = max(longest, r - l + 1)
+        r += 1
+
+    return longest
+
+
+
+
