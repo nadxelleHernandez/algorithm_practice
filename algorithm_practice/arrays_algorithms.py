@@ -621,20 +621,18 @@ def duplicates_within_k(numbers, k):
     repited = {}
 
     for i in range(num_len):
-        repited_indexes = repited.get(numbers[i])
-        if repited_indexes:
-            if i < k: #we are in the first subarray
+        if numbers[i] in repited:
+            if i - repited[numbers[i]]<= k: #we are in the first subarray
                 return True
-            repited_indexes.append(i)
         else:
-            repited[numbers[i]] = [i]
-            
-    for indexes in repited.values():
-        repited_len = len(indexes)
-        if repited_len > 1: #it is repeated
-            for i in range(1,repited_len):
-                if abs(indexes[i]-indexes[i-1]) <= k:
-                    return True
+            repited[numbers[i]] = i
+
+    # for indexes in repited.values():
+    #     repited_len = len(indexes)
+    #     if repited_len > 1: #it is repeated
+    #         for i in range(1,repited_len):
+    #             if abs(indexes[i]-indexes[i-1]) <= k:
+    #                 return True
     return False
     
 
