@@ -599,5 +599,92 @@ def lenght_of_longest_substring_efficient(string: str) ->int:
     return longest
 
 
+def duplicates_within_k(numbers, k): 
+    '''
+    INPUT: list of integers and integer k
+    OUTPUT: Boolean indicating whether there is are duplicate elements in the list within k distance
+    '''
+
+    if not numbers:
+        raise ValueError("The numbers list shouldn't be empty")
+    
+    if k <= 0:
+        raise ValueError("K should be greater than zero")
+    
+    num_len = len(numbers)
+    if num_len == 1:
+        return False
+    
+    if num_len < k:
+        k = num_len
+    
+    repited = {}
+
+    for i in range(num_len):
+        repited_indexes = repited.get(numbers[i])
+        if repited_indexes:
+            if i < k: #we are in the first subarray
+                return True
+            repited_indexes.append(i)
+        else:
+            repited[numbers[i]] = [i]
+            
+    for indexes in repited.values():
+        repited_len = len(indexes)
+        if repited_len > 1: #it is repeated
+            for i in range(1,repited_len):
+                if abs(indexes[i]-indexes[i-1]) <= k:
+                    return True
+    return False
+    
+
+
+
+    # for i in range(k):
+    #     if repited.get(numbers[i]):
+    #         return True
+    #     repited[numbers[i]]=True
+
+    # return False
+        
+
+#   [1,2,3,4]
+#   [1,2,3,4]
+#   [1,2,3,4]
+#   [1,2,3,4]
+# ]
+# 
+# n, n -1, n-1, n - 2, n - 2, n - 3, n - 3, done
+#
+# [
+#   [1,2,3,4,5]
+#   [1,2,3,4,5]
+#   [1,2,3,4,5]
+#   [1,2,3,4,5]
+#   [1,2,3,4,5]
+# ]
+# ]
+# # n, n -1, n-1, n - 2, n - 2, n - 3, n - 3, n - 4, n - 4, done
+#
+# Prints out the array elements in a spiral, starting from (0, 0) and going right
+# Example:
+# 1 2 3 6 9 8 7 4 5
+
+# if is empty print message
+# have indexes for row and other for the column
+#start them in zero
+def printSpiral(matrix):
+  row =0  
+  column = 0
+  
+  matrix_length = len(matrix[0])
+  
+  
+  
+  #In first row, go through each column to the end
+  #change row until the end of rows n-1 times
+  #change column until the begining n-1 times
+  #change rows until last row n-1 times
+  #change column until n-1
 
 
