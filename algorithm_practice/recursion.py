@@ -76,6 +76,50 @@ def digit_match(number1, number2):
     return digit_match(next_number1,next_number2)
 
 
-    
+def min_max(arr):
+    '''
+    INPUT: 1-dimensional array with integers which can be either positive or negative
+    OUTPUT: Tuple where the first element is the minimum element in the array and the second element is the maximum element in the array.
 
+    Example input:
+    [7, 1, 8, 5, 10, 4, 2, 6]
+
+    Example output:
+    (1, 10)
+  '''
     
+    if not arr:
+        return None
+    
+    arr_len = len(arr)
+    min = 0
+    max = 0
+    
+    if arr_len == 1:
+        return arr[0],arr[0]
+
+    if arr_len == 2:
+        if arr[0] < arr[1]:
+           min = arr[0]
+           max = arr[1]
+        else:
+           min = arr[1]
+           max = arr[0]
+        return min,max
+    
+    mid = arr_len//2
+    min_max_right = min_max(arr[:mid]) 
+    min_max_left = min_max(arr[mid:])
+
+    if min_max_right[0] < min_max_left[0]:
+        min = min_max_right[0]
+    else:
+        min = min_max_left[0]
+
+    if min_max_right[1] > min_max_left[1]:
+        max = min_max_right[1]
+    else:
+        max = min_max_left[1]
+
+    return min,max
+ 

@@ -1,6 +1,48 @@
 from algorithm_practice.recursion import (factorial,reverse,bunny,
-               is_nested_parens,search, is_palindrome,digit_match)
+               is_nested_parens,search, is_palindrome,digit_match, min_max)
 import pytest
+
+def test_min_max_valid_array_valid_output():
+    arr = [7, 1, 8, 5, 10, 4, 2, 6]
+
+    result = min_max(arr)
+
+    assert result == (1,10)
+
+def test_min_max_valid_array_all_same_value():
+    arr = [1,1,1,1,1,1,1,1]
+
+    result = min_max(arr)
+
+    assert result == (1,1)
+
+def test_min_max_empty_array_none_result():
+    arr = []
+
+    result = min_max(arr)
+
+    assert result == None
+
+def test_min_max_valid_array_negative_numbers():
+    arr = [-7, -1, 8, -5, -10, 4, 2, 6]
+
+    result = min_max(arr)
+
+    assert result == (-10,8)
+
+def test_min_max_array_size_1():
+    arr = [-7]
+
+    result = min_max(arr)
+
+    assert result == (-7,-7)
+
+def test_min_max_array_uneven_length():
+    arr = [-7,10,2]
+
+    result = min_max(arr)
+
+    assert result == (-7,10)
 
 def test_factorial_zero():
     assert factorial(0) == 1

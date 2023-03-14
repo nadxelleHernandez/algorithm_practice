@@ -635,9 +635,6 @@ def duplicates_within_k(numbers, k):
     #                 return True
     return False
     
-
-
-
     # for i in range(k):
     #     if repited.get(numbers[i]):
     #         return True
