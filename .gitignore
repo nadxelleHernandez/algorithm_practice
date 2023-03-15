@@ -35,3 +35,4 @@ tests/__pycache__/test_graphs.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_has_balanced_sum.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_lenght_of_longest_substring.cpython-310-pytest-7.2.0.pyc
 tests/__pycache__/test_duplicates_within_k.cpython-310-pytest-7.2.0.pyc
+tests/__pycache__/test_divide_and_conquer.cpython-310-pytest-7.2.0.pyc
