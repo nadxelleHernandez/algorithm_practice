@@ -93,7 +93,7 @@ def max_contiguous_sum(arr):
     7 (from index 2-6)
     '''
     if not arr:
-        return None
+        return 0
     
     max_sum = arr[0]
     length = len(arr)
@@ -103,7 +103,7 @@ def max_contiguous_sum(arr):
 
     i = 1
     j = 0
-    sum = arr[0]
+    sum = 0
 
     while j < length:
         sum += arr[j]
