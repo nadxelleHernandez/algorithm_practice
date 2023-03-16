@@ -80,3 +80,60 @@ def longest_common_subsequence(str1, str2, memo=None):
     memo[str1][str2] = result
 
     return result
+
+def max_contiguous_sum(arr):
+    '''
+    INPUT: 1-dimensional array with integers which can be either positive or negative
+    OUTPUT: int, which is the maximum contiguous subarray sum
+
+    Example input:
+    [-2, -3, 4, -1, -2, 1, 5, -3]
+
+    Example output:
+    7 (from index 2-6)
+    '''
+    if not arr:
+        return None
+    
+    max_sum = arr[0]
+    length = len(arr)
+
+    if length == 1:
+        return max_sum
+
+    i = 1
+    j = 0
+    sum = arr[0]
+
+    while j < length:
+        sum += arr[j]
+        if max_sum < sum:
+            max_sum = sum
+        if sum < 0:
+            sum = 0
+        j+=1
+
+    return max_sum
+
+    # while j < length:
+    #     sum += arr[j]
+    #     if arr[i] >= max_sum or sum > max_sum:
+    #         max_sum = max(arr[i],sum)
+            
+    #     else:
+    #         i += 1
+    #         sum = arr[i]
+    #         j = i
+
+    #     j += 1
+        # sum = arr[i] + arr[j]
+        # if arr[i] > max_sum or sum > max_sum: #The sum is increasing
+        #     max_sum = max(arr[i],sum)
+        #     actual_sum += sum
+        # else:
+        #     actual_sum = 0
+        # i += 1 
+        # j += 1
+
+    return max_sum
+    
