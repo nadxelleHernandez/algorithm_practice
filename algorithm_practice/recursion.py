@@ -122,4 +122,3 @@ def min_max(arr):
         max = min_max_left[1]
 
     return min,max
- 
