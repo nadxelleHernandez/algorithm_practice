@@ -627,13 +627,14 @@ def duplicates_within_k(numbers, k):
         else:
             repited[numbers[i]] = i
 
+    return False
+
     # for indexes in repited.values():
     #     repited_len = len(indexes)
     #     if repited_len > 1: #it is repeated
     #         for i in range(1,repited_len):
     #             if abs(indexes[i]-indexes[i-1]) <= k:
     #                 return True
-    return False
     
     # for i in range(k):
     #     if repited.get(numbers[i]):

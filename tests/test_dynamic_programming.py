@@ -1,4 +1,24 @@
-from algorithm_practice.dynamic_programming import longest_common_subsequence, max_contiguous_sum
+from algorithm_practice.dynamic_programming import longest_common_subsequence, max_contiguous_sum, newman_conway
+
+def test_newman_conway_n_2():
+    newman = newman_conway(2)
+
+    assert newman == 1
+
+def test_newman_conway_n_5():
+    newman = newman_conway(5)
+
+    assert newman == 3
+
+def test_newman_conway_n_8():
+    newman = newman_conway(8)
+
+    assert newman == 4
+
+def test_newman_conway_n_20():
+    newman = newman_conway(20)
+
+    assert newman == 12
 
 def test_lcs_two_str_and_subsequence():
     str1 = "abcde"
@@ -8,6 +28,30 @@ def test_lcs_two_str_and_subsequence():
 
     assert result == 3
 
+def test_lcs_two_str_and_no_subsequence():
+    str1 = "abcde"
+    str2 = "fgh"
+
+    result = longest_common_subsequence(str1, str2)
+
+    assert result == 0
+
+def test_lcs_one_str_one_empty_str_returns_no():
+    str1 = "abcde"
+    str2 = ""
+
+    result = longest_common_subsequence(str1, str2)
+
+    assert result == 0
+
+def test_lcs_one_str_two_empty_str_returns_no():
+    str2 = "abcde"
+    str1 = ""
+
+    result = longest_common_subsequence(str1, str2)
+
+    assert result == 0
+
 def test_max_contiguous_sum_valid_array():
     arr = [-2, -3, 4, -1, -2, 1, 5, -3]
 
@@ -15,4 +59,3 @@ def test_max_contiguous_sum_valid_array():
 
     assert result == 7
 
-    

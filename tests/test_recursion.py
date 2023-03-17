@@ -2,7 +2,7 @@ from algorithm_practice.recursion import (factorial,reverse,bunny,
                is_nested_parens,search, is_palindrome,digit_match, min_max)
 import pytest
 
-def test_min_max_valid_array_valid_output():
+def test_min_max_valid_array_all_positive():
     arr = [7, 1, 8, 5, 10, 4, 2, 6]
 
     result = min_max(arr)
