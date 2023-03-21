@@ -1,4 +1,20 @@
-from algorithm_practice.dynamic_programming import longest_common_subsequence, max_contiguous_sum, newman_conway
+from algorithm_practice.dynamic_programming import longest_common_subsequence, max_contiguous_sum, newman_conway, minimum_sub_list_length
+
+def test_minimum_sub_list_length():
+    arr = [3, 2, 5, 8, 12, 1]
+    k = 5
+
+    result = minimum_sub_list_length(arr,k)
+
+    assert result == 1
+
+def test_minimum_sub_list_length_1234_target_10():
+    arr = [1,2,3,4]
+    k = 10
+
+    result = minimum_sub_list_length(arr,k)
+
+    assert result == 4
 
 def test_newman_conway_n_2():
     newman = newman_conway(2)

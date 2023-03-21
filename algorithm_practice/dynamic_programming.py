@@ -255,3 +255,41 @@ def newman_conway(n):
 
     return memo[n]
 
+def minimum_sub_list_length(numbers, target):
+    '''
+    INPUT: list of positive numbers, and target a positive integer
+    OUTPUT: the minimal length of a contiguous sublist of the given input list which adds up to the given integer.
+    Using a dynamic sliding window, return the length of the smallest contiguous sublist which adds up to the given integer or 
+    return None if there is no such sublist.
+    '''
+
+    if not numbers:
+        return None
+    
+    num_len = len(numbers)
+    ini = 0
+    min_len = num_len + 1
+    end = 0
+    curr_sum = 0
+
+    while end <= num_len:
+        curr_sum = sum(numbers[ini:end])
+        if curr_sum == target:
+            curr_len = end-ini
+            if curr_len <= min_len:
+                min_len = curr_len
+                
+            ini += 1
+        elif curr_sum < target:
+            end += 1
+        else:
+            ini += 1
+
+    if min_len == (num_len + 1):
+        return None
+    
+    return min_len
+            
+
+
+
