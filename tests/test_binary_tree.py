@@ -94,4 +94,36 @@ def test_height_more_than_one_node():
 
     assert height == 4
 
+def test_delete_node_leaf():
+    tree = Tree()
+    tree.add(17)
+    tree.add(14)
+    tree.add(20)
+    tree.add(19)
+    tree.add(52)
+
+    tree.delete(52)
+
+    assert tree.inorder() == [14,17,19,20]
+
+def test_delete_node_no_leaf():
+    tree = Tree()
+    tree.add(17)
+    tree.add(14)
+    tree.add(20)
+    tree.add(19)
+    tree.add(52)
+
+    tree.delete(20)
+
+    assert tree.inorder() == [14,17,19,52]
+
+def test_delete_node_single_element_tree():
+    tree = Tree()
+    tree.add(17)
+
+    tree.delete(17)
+
+    assert tree.inorder() == []
+
 

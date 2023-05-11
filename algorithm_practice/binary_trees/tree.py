@@ -186,6 +186,47 @@ class Tree:
             return max_height_left
         
         return max_height_right
+    
+    def findLesserNode(self, node):
+        if not node:
+            return None
+        
+        while current.left:
+            current = current.left
+
+        return current
+    
+    def delete_rec(self, current, key):
+        if not current:
+            return None
+        
+        if current.key < key:
+            current.right = self.delete_rec(current.right, key)
+
+        if current and current.key > key:
+            current.left = self.delete_rec(current.left, key)
+        
+        if current and current.key == key:
+            if not current.left:
+                return current.right
+            if not current.right:
+                return current.left
+            #there were nodes in both sides
+            lesser = current.right
+            while lesser.left:
+                lesser = lesser.left
+            current.key = lesser.key
+            current.value = lesser.value
+            current.right = self.delete_rec(current.right, current.key) 
+        
+        return current
+
+    def delete(self, key):
+        if not self.root:
+            return
+        
+        self.root = self.delete_rec(self.root, key)
+        
 
 
 
