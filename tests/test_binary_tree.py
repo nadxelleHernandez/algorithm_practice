@@ -1,4 +1,4 @@
-from algorithm_practice.binary_trees.tree import Tree
+from algorithm_practice.binary_trees.tree import Tree, arr_to_bst
 from algorithm_practice.binary_trees.tree_node import TreeNode
 
 def test_find_node_recursively():
@@ -125,5 +125,26 @@ def test_delete_node_single_element_tree():
     tree.delete(17)
 
     assert tree.inorder() == []
+
+def test_arr_to_bst():
+    arr = [5, 10, 15, 20, 25, 30, 35, 40, 45]
+
+    tree = arr_to_bst(arr)
+
+    assert tree != None
+    assert Tree.is_BST(tree.root)
+    assert tree.is_balanced()
+
+def test_will_return_balanced_bst_for_even_lengthed_list():
+    # Arrange
+    arr = [1, 3, 9, 27, 81, 243]
+
+    # Act
+    result = arr_to_bst(arr)
+
+    # Assert
+    assert result != None
+    assert Tree.is_BST(result.root)
+    assert result.is_balanced()
 
 

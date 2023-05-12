@@ -226,7 +226,61 @@ class Tree:
             return
         
         self.root = self.delete_rec(self.root, key)
-        
 
+    @staticmethod
+    def is_BST(root):
+        if not root:
+            return True
+    
+        if root.left:
+            if root.left.key > root.key:
+                return False
+
+        if root.right:
+            if root.right.key < root.key:
+                return False
+            
+        return Tree.is_BST(root.left) and Tree.is_BST(root.right)
+
+    def is_balanced_rec(self, root):
+        if not root:
+            return True
+
+        left_height = self.height_recursive(self.root.left,1)
+        right_height = self.height_recursive(self.root.right,1)
+
+        if abs(left_height-right_height) > 1:
+            return False
+        
+        left_subtree = self.is_balanced_rec(root.left)
+        right_subtree = self.is_balanced_rec(root.left)
+        
+        return left_subtree and right_subtree
+    
+    def is_balanced(self):
+        if not self.root:
+            return True
+        
+        return self.is_balanced_rec(self.root)
+
+
+    #[5, 10, 15, 20, 25, 30, 35, 40, 45]
+def arr_to_bst_rec(arr, start, end, tree):
+    if end == -1 or end <= start:
+        return
+    
+    half = (start + end) // 2
+    tree.add(arr[half])
+    arr_to_bst_rec(arr, start, half-1, tree)
+    arr_to_bst_rec(arr,half+1, end, tree)
+
+def arr_to_bst(arr):
+    if not arr:
+        return None
+        
+    new_tree = Tree()
+
+    arr_to_bst_rec(arr,0,len(arr),new_tree)
+    return new_tree
 
 
