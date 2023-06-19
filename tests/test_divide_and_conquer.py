@@ -50,9 +50,6 @@ def test_pascal_triangle_6():
     [1, 5, 10, 10, 5, 1]
 ]
 
-
-    assert result == 6
-
 def test_pascal_triangle_0():
     n = 0
 
