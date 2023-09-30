@@ -371,6 +371,41 @@ def merge_ordered_lists(list1, list2):
 
     return merged
 
+def merge(nums1, m: int, nums2, n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        totalLen = n+m
+        if m == 0:
+            for i in range(n):
+                nums1[i] = nums2[i]
+            return
+
+        if n == 0:
+            return
+
+        result = []
+        j = 0
+        i = 0
+        while i < m:
+            if i < n:
+                if nums1[i] > nums2[j]:
+                    result.append(nums2[j])
+                    j = j + 1
+                else:
+                    result.append(nums1[i])
+                    i = i + 1
+            else:
+                for k in range(i,m):
+                    result.append(nums1[k])
+
+        if j < n:
+            for k in range(j,n):
+                result.append(nums2[k])
+        
+        for i in range(totalLen):
+            nums1[i] = result[i]
+
 def reshape_matrix(matrix, r, c):
     """You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing the number of rows and number of columns of the wanted reshaped matrix, respectively.
         The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing order as they were.
