@@ -383,28 +383,28 @@ def merge(nums1, m: int, nums2, n: int) -> None:
 
         if n == 0:
             return
-
-        result = []
-        j = 0
-        i = 0
-        while i < m:
-            if i < n:
-                if nums1[i] > nums2[j]:
-                    result.append(nums2[j])
-                    j = j + 1
-                else:
-                    result.append(nums1[i])
-                    i = i + 1
-            else:
-                for k in range(i,m):
-                    result.append(nums1[k])
-
-        if j < n:
-            for k in range(j,n):
-                result.append(nums2[k])
         
-        for i in range(totalLen):
-            nums1[i] = result[i]
+        res_index = totalLen - 1
+
+        i = m - 1
+        j = n - 1
+
+        while i >= 0:
+            if j < 0:
+                break
+            if nums1[i] < nums2[j]:
+                nums1[res_index] = nums2[j]
+                j = j - 1
+                res_index = res_index - 1
+            else:
+                nums1[res_index] = nums1[i]
+                i = i - 1
+                res_index = res_index - 1
+
+        while j >= 0:
+            nums1[res_index] = nums2[j]
+            j = j - 1
+            res_index = res_index - 1
 
 def reshape_matrix(matrix, r, c):
     """You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing the number of rows and number of columns of the wanted reshaped matrix, respectively.
