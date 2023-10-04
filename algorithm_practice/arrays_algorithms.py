@@ -575,6 +575,26 @@ def get_balanced_sum_index(array):
         left_sum = 0
     return None
 
+def singleNumber(nums: [int]) -> int:
+        '''Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+           You must implement a solution with a linear runtime complexity and use only constant extra space.
+           
+           Input: nums = [2,2,1]
+           Output: 1
+        '''
+        nums.sort()
+        
+        count = 1 
+        for i in range(len(nums)-1):
+            if nums[i] == nums[i+1]:
+                count += 1
+            else:
+                if count == 1:
+                    return nums[i]
+                count = 1
+                
+        return nums[-1]
+
 def check_substring(string: str, init: int) -> int:
     used_chars = set()
     current_len = 0
