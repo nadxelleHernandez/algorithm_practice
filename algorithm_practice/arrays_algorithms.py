@@ -575,6 +575,56 @@ def get_balanced_sum_index(array):
         left_sum = 0
     return None
 
+def intersect(nums1: [int], nums2: [int]) -> [int]:
+    if not nums1:
+        return nums2
+            
+    if not nums2:
+        return nums1
+        
+    rep1 = {}
+        
+    for num in nums1:
+        rep1[num] = rep1.get(num,0) + 1
+            
+    rep2 = {}
+    for num in nums2:
+        rep2[num] = rep2.get(num,0) + 1
+            
+    result = []
+    for num in rep1.keys():
+        if num in rep2:
+            i = 0
+            while i < min(rep1[num], rep2[num]):
+                result.append(num)
+                i += 1
+                    
+    return result
+
+def intersect_sorted(nums1: [int], nums2: [int]) ->[int]:
+    if not nums1:
+        return nums2
+        
+    if not nums2:
+        return nums1
+        
+    len1 = len(nums1)
+    len2 = len(nums2)
+    i = 0
+    j = 0
+    result = []
+    while i < len1 and j < len2:
+        if nums1[i] < nums2[j]:
+            i += 1
+        elif nums1[i] > nums2[j]:
+                j += 1
+        else:
+            result.append(nums1[i])
+            i += 1
+            j += 1
+                
+    return result
+
 def singleNumber(nums: [int]) -> int:
         '''Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
            You must implement a solution with a linear runtime complexity and use only constant extra space.
