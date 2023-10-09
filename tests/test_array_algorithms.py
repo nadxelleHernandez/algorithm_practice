@@ -1,4 +1,4 @@
-from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted
+from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array
 
 def test_merge():
     nums1 = [1,2,3,0,0,0]
@@ -23,3 +23,24 @@ def test_intersect_sorted():
     result = intersect_sorted(nums1,nums2)
 
     assert result == [2,2,5]
+
+def test_add_one_int_array_no_carry_on():
+    digits = [1,2,3]
+
+    result = add_one_int_array(digits)
+
+    assert result == [1,2,4]
+
+def test_add_one_int_array_carry_on():
+    digits = [1,9,9]
+
+    result = add_one_int_array(digits)
+
+    assert result == [2,0,0]
+
+def test_add_one_int_array_one_element_carry_on():
+    digits = [9]
+
+    result = add_one_int_array(digits)
+
+    assert result == [1,0]

@@ -625,6 +625,31 @@ def intersect_sorted(nums1: [int], nums2: [int]) ->[int]:
                 
     return result
 
+def add_one_int_array(number: [int]) -> [int]:
+    if not number:
+        return [1]
+    
+    carry_on = 0
+    init = len(number)-1
+    sum = 0
+    for i in range (init,-1,-1):
+        if i == init:
+            sum = number[i] + 1
+        else:
+            sum = number[i] + carry_on
+        if sum >= 10:
+            carry_on = 1
+            number[i] = 0
+        else:
+            number[i] = sum
+            carry_on = 0
+
+    if carry_on == 1: 
+        number.insert(0,1)
+
+    return number
+        
+
 def singleNumber(nums: [int]) -> int:
         '''Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
            You must implement a solution with a linear runtime complexity and use only constant extra space.
