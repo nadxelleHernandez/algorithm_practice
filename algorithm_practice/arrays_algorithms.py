@@ -648,7 +648,26 @@ def add_one_int_array(number: [int]) -> [int]:
         number.insert(0,1)
 
     return number
+
+def moveZeroes(nums: [int]):
+    """
+        Do not return anything, modify nums in-place instead.
+    """
+    if not nums: 
+        return
         
+    non_zero_i = 0
+    num_zeros = 0
+    nums_len = len(nums)
+        
+    for i in range(nums_len):
+        if nums[i] != 0:
+            nums[non_zero_i] = nums[i]
+            non_zero_i += 1
+    
+    for i in range(non_zero_i,nums_len):
+        nums[i] = 0
+
 
 def singleNumber(nums: [int]) -> int:
         '''Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.

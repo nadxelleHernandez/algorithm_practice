@@ -1,4 +1,4 @@
-from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array
+from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array, moveZeroes
 
 def test_merge():
     nums1 = [1,2,3,0,0,0]
@@ -44,3 +44,10 @@ def test_add_one_int_array_one_element_carry_on():
     result = add_one_int_array(digits)
 
     assert result == [1,0]
+
+def test_moveZeroes_non_empty_array_with_zeroes():
+    nums = [0,1,0,3,12]
+
+    moveZeroes(nums)
+
+    assert nums == [1,3,12,0,0]
