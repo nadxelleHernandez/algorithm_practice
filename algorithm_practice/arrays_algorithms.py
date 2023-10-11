@@ -747,6 +747,34 @@ def lenght_of_longest_substring_efficient(string: str) ->int:
 
     return longest
 
+def two_sum(nums: [int], target:int) -> [int]:
+    '''Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+        You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+        You can return the answer in any order.
+    '''
+
+    if not nums:
+        return []
+    
+    pairs_dic = {}
+    for i, num in enumerate(nums):
+        if num not in pairs_dic:
+            pairs_dic[num] = i
+        elif target - num == num:
+            return (pairs_dic[num],i)
+
+
+    for num in pairs_dic.keys():
+        dif = target - num
+        if dif!= num and dif in pairs_dic:
+            return [pairs_dic[num], pairs_dic[dif]]
+        
+    return []
+
+
+
 
 def duplicates_within_k(numbers, k): 
     '''

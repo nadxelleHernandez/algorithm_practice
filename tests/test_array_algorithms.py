@@ -1,4 +1,4 @@
-from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array, moveZeroes
+from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array, moveZeroes, two_sum
 
 def test_merge():
     nums1 = [1,2,3,0,0,0]
@@ -51,3 +51,43 @@ def test_moveZeroes_non_empty_array_with_zeroes():
     moveZeroes(nums)
 
     assert nums == [1,3,12,0,0]
+
+def test_two_sum_non_empty_positive_pair_exists():
+    nums = [2,7,11,15]
+    target = 9
+
+    result = two_sum(nums,target)
+
+    assert len(result) == 2
+    assert 0 in result
+    assert 1 in result
+
+def test_two_sum_non_empty_negatives_pair_exists():
+    nums = [-2,21,5,-11,8]
+    target = -13
+
+    result = two_sum(nums,target)
+
+    assert len(result) == 2
+    assert 0 in result
+    assert 3 in result
+
+def test_two_sum_same_pair_sum_exists():
+    nums = [3,3,-1]
+    target = 6
+
+    result = two_sum(nums,target)
+
+    assert len(result) == 2
+    assert 0 in result
+    assert 1 in result
+
+def test_two_sum_same_number_other_pair_exists():
+    nums = [3,2,4]
+    target = 6
+
+    result = two_sum(nums,target)
+
+    assert len(result) == 2
+    assert 1 in result
+    assert 2 in result
