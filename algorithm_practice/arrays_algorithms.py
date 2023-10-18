@@ -773,7 +773,77 @@ def two_sum(nums: [int], target:int) -> [int]:
         
     return []
 
+def isValidSudoku(board: [[str]]) -> bool: 
+    if not board:
+        return False
+    
+    board_rows = len(board)
+    if board_rows != 9:
+        return False
+    
+    board_cols = len(board[0])
+    if board_cols != 9:
+        return False
+    
+    #Brute force
+    #Checking rows
+    for row in board:
+        digits = [0 for x in range(10)]
+        for num in row:
+            if num != ".":
+                num = int(num)
+                if digits[num] == 0:
+                    digits[num] = 1
+                else:
+                    return False
+            
+    #checking columns
+    for col in range(board_cols):
+        digits = [0 for x in range(10)]
+        for row in range(board_cols):
+            num = board[row][col]
+            if num != ".":
+                num = int(num)
+                if digits[num] == 0:
+                    digits[num] = 1
+                else:
+                    return False
+            
+    #checking 3x3 grid
+    #needs to update grid_start and end depending on the position. Need to figure out the rule
+    square_row = 0
+    square_col= 0
+    grid_start_row = 0
+    grid_end_row = 3
+    grid_start_col = 0
+    grid_end_col = 3
+    square = 0
+    while square < 9:
+        digits = [0 for x in range(10)]
+        for row in range(grid_start_row,grid_end_row):
+            for col in range(grid_start_col,grid_end_col):
+                num = board[row][col]
+                if num != ".":
+                    num = int(num)
+                    if digits[num] == 0:
+                        digits[num] = 1
+                    else:
+                        return False
+        square += 1
+        square_col += 1
+        if square_col == 3:
+            square_col = 0
+            square_row += 1
+            grid_end_col = 0
+            grid_end_row += 3
+        
+        grid_start_row = 3*square_row
+        grid_start_col = 3*square_col
+        grid_end_col += 3
 
+    return True
+
+             
 
 
 def duplicates_within_k(numbers, k): 
