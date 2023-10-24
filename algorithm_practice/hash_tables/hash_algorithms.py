@@ -90,3 +90,25 @@ def is_palindrome_permutation(word):
             return False
 
     return True
+
+def server_failures(logs: [str]):
+    '''
+    Given n number of servers, tell how many time had they needed to be restarted. A server is restarted when it fails three times. This failures can be located on the 
+    logs array as: s1 failed for server 1, s2 failed for server 2 etc.
+    '''
+
+    failure_dict = {}
+    for s in logs:
+        if "failed" in s:
+            if s in failure_dict:
+                failure_dict[s] += 1
+            else:
+                failure_dict[s] = 1
+
+    times_failed = 0
+    for fail in failure_dict.values():
+        if fail >= 3:
+            times_failed += fail // 3
+
+    return times_failed
+
