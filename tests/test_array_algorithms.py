@@ -1,4 +1,4 @@
-from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array, moveZeroes, two_sum, isValidSudoku
+from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array, moveZeroes, two_sum, isValidSudoku, has_word
 
 def test_merge():
     nums1 = [1,2,3,0,0,0]
@@ -131,3 +131,15 @@ def test_isValidSudoku_extrem_board():
             ,[".",".",".",".",".","5","2",".","."]]
     
     assert isValidSudoku(board) == False
+
+def test_has_word_hackerrank_true_many_repetitions():
+    word = "hackerrankk"
+    s = "hereIamathackernomorerrankkk"
+
+    assert has_word(s,word)
+
+def test_has_word_mucho_false():
+    word = "mucho"
+    s = "noestamuybieno"
+
+    assert not has_word(s,word)

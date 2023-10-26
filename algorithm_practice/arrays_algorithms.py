@@ -843,7 +843,35 @@ def isValidSudoku(board: [[str]]) -> bool:
 
     return True
 
-             
+def has_word(s: str, word: str):
+    '''
+    Returns if the string s has all the letters in the right order to form the word
+    Examples:
+    s = "mmuucchooooefs"
+    word = "mucho"
+    returns True
+
+    s = "asafmchoo"
+    word = "mucho"
+    returns False
+    '''
+    if not s or not word:
+        return False
+    
+    word_len = len(word)
+    word_i = 0
+    currentchar = ""
+    for char in s:
+        if word_i < word_len and char == word[word_i] and char != currentchar:
+            word_i += 1
+            currentchar = char
+            if word_i < word_len and word[word_i] == currentchar: #checking for repeated chars in s
+                currentchar = ""
+        if word_i == word_len:
+            return True
+        
+    return False
+    
 
 
 def duplicates_within_k(numbers, k): 
@@ -875,59 +903,5 @@ def duplicates_within_k(numbers, k):
             repited[numbers[i]] = i
 
     return False
-
-    # for indexes in repited.values():
-    #     repited_len = len(indexes)
-    #     if repited_len > 1: #it is repeated
-    #         for i in range(1,repited_len):
-    #             if abs(indexes[i]-indexes[i-1]) <= k:
-    #                 return True
-    
-    # for i in range(k):
-    #     if repited.get(numbers[i]):
-    #         return True
-    #     repited[numbers[i]]=True
-
-    # return False
-        
-
-#   [1,2,3,4]
-#   [1,2,3,4]
-#   [1,2,3,4]
-#   [1,2,3,4]
-# ]
-# 
-# n, n -1, n-1, n - 2, n - 2, n - 3, n - 3, done
-#
-# [
-#   [1,2,3,4,5]
-#   [1,2,3,4,5]
-#   [1,2,3,4,5]
-#   [1,2,3,4,5]
-#   [1,2,3,4,5]
-# ]
-# ]
-# # n, n -1, n-1, n - 2, n - 2, n - 3, n - 3, n - 4, n - 4, done
-#
-# Prints out the array elements in a spiral, starting from (0, 0) and going right
-# Example:
-# 1 2 3 6 9 8 7 4 5
-
-# if is empty print message
-# have indexes for row and other for the column
-#start them in zero
-def printSpiral(matrix):
-  row =0  
-  column = 0
-  
-  matrix_length = len(matrix[0])
-  
-  
-  
-  #In first row, go through each column to the end
-  #change row until the end of rows n-1 times
-  #change column until the begining n-1 times
-  #change rows until last row n-1 times
-  #change column until n-1
 
 
