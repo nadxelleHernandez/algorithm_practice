@@ -63,12 +63,42 @@ def rotate_90(matrix):
 # have indexes for row and other for the column
 #start them in zero
 def printSpiral(matrix):
-  row =0  
-  column = 0
-  
-  matrix_length = len(matrix[0])
-  
-  
+    if not matrix:
+        return []
+    
+    x = 0
+    y = 0
+
+    x_times_max = len(matrix)
+    y_times_max = x_times_max
+    d = 1
+    
+    spiral = []
+    while x_times_max > 0 and y_times_max > 0:
+        x_count = 0
+        y_count = 0
+        while y_count < y_times_max:
+            spiral.append(matrix[x][y])
+            y += d
+            y_count += 1
+        
+        x_times_max -= 1 
+        x += d
+        y += d*(-1)
+        while x_count < x_times_max:
+            spiral.append(matrix[x][y])
+            x += d
+            x_count += 1
+        
+        y_times_max -=1
+        d *= -1
+        x += d
+        y += d
+
+    return spiral
+
+
+
   
   #In first row, go through each column to the end
   #change row until the end of rows n-1 times
