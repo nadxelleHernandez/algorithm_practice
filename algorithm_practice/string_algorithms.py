@@ -38,3 +38,15 @@ def marsExploration(s):
         help_i += 1
 
     return char_changed
+
+def reverseWords(s: str) -> str:
+    if not s:
+        return ""
+    s = s.strip()
+    words = s.split()
+    result = ""
+    for i in range(len(words)-1, 0, -1):
+        result += words[i] + " "
+
+    result += words[0]
+    return result
