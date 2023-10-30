@@ -117,3 +117,32 @@ class Queue_O:
             self.first_on_bottom.add(val)
 
         self.first_on_bottom.add(value)
+
+def evalRPN(tokens):
+    """
+        Evalueate polish 
+        :type tokens: List[str]
+        :rtype: int
+        Input: tokens = ["2","1","+","3","*"]
+        Output: 9
+        Explanation: ((2 + 1) * 3) = 9
+    """
+    stack = []
+    for elem in tokens:
+        if elem == '+':
+            stack.append(stack.pop() + stack.pop())
+        elif elem == '-':
+            num2 = stack.pop()
+            num1 = stack.pop()
+            stack.append(num1-num2)
+        elif elem == '*':
+            stack.append(stack.pop() * stack.pop())
+        elif elem == '/':
+            divisor = stack.pop()
+            dividend = stack.pop()
+            stack.append(int(float(dividend)/divisor))
+            
+        else:
+            stack.append(int(elem))
+
+    return stack[0]

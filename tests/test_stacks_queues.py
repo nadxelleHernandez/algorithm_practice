@@ -1,4 +1,4 @@
-from algorithm_practice.stacks_queues import Stack, Queue, Queue_O
+from algorithm_practice.stacks_queues import Stack, Queue, Queue_O, evalRPN
 
 def test_queue_adding_10_elements():
     queue = Queue()
@@ -59,5 +59,20 @@ def test_queue_o_adding_and_removing_alternating():
         value = queue.dequeue()
 
     assert result == [5,6,7,8,9]
+
+def test_polish_notation_simple():
+   tokens = ["2","1","+","3","*"]
+
+   result = evalRPN(tokens)
+
+   assert result == 9
+
+def test_polish_notation_all_operations():
+   tokens = tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
+
+   result = evalRPN(tokens)
+
+   assert result == 22
+
 
 
