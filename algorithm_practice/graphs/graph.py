@@ -134,10 +134,11 @@ def possible_bipartition(graph):
 
 
 
-#def numIslands(grid: list[list[str]]) -> int:
+def numIslands(grid: list[list[str]]) -> int:
     '''Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), 
     return the number of islands.
-    An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+    An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. 
+    You may assume all four edges of the grid are all surrounded by water.
 
         Example 1:
 
@@ -165,12 +166,37 @@ def possible_bipartition(graph):
         n == grid[i].length
         1 <= m, n <= 300
         grid[i][j] is '0' or '1'.'''
-    # if not grid:
-    #     return 0
+    if not grid:
+        return 0
 
-    # num_islands = 0
-    # visited = []
-    # queue = [] 
+    num_islands = 0
+    m = len(grid)
+    n = len(grid[0])
+    visited = [[0 for x in range(n)] for m in range(m)]
+    stack = [] 
+
+    #first we are going to go throght the matrix as if is a graph. We visit each position, if it is a one we added to the queue
+    #if it is a zero we just marked it as visited.
+    #this will give us a matrix with all the conected nodes. When the queue is done, we found the whole island
+    #we continue to look into the visited matrix until we found another 1 that hasn't been visited. That will be another island to traverse as a matrix
+    
+    for i in range(m):
+        for j in range(n):
+            if grid[i][j] == '1' and not visited[i][j]: ## we start the graph
+                stack.append((i,j))
+                while stack:
+                    island_i, island_j = stack.pop()
+                    if island_i >= m or island_i <0  or island_j >= n or island_j <0 or visited[island_i][island_j] or grid[island_i][island_j]=='0':
+                        continue
+                    visited[island_i][island_j] = 1
+                    stack.append((island_i+1,island_j))
+                    stack.append((island_i-1,island_j))
+                    stack.append((island_i,island_j+1))
+                    stack.append((island_i,island_j-1))
+                num_islands += 1
+                        
+    return num_islands
+
 
 # def wordExistinTile(board: list[list[str]], word: str) -> bool:
     '''https://leetcode.com/problems/word-search/

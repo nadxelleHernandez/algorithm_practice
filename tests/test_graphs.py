@@ -1,4 +1,4 @@
-from algorithm_practice.graphs.graph import Graph, possible_bipartition
+from algorithm_practice.graphs.graph import Graph, possible_bipartition, numIslands
 
 def test_bgs_one_item():
     graph = Graph({"Seattle": []})
@@ -222,4 +222,16 @@ def test_will_return_false_for_disconnected_graph_which_cannot_be_bipartitioned(
 
     # Assert
     assert not answer
+
+def test_numIslands_one_island():
+    grid = [
+        ["1","1","1","1","0"],
+        ["1","1","0","1","0"],
+        ["1","1","0","0","0"],
+        ["0","0","0","0","0"]
+    ]
+
+    answer = numIslands(grid)
+
+    assert answer == 1
 
