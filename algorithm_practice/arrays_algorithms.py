@@ -204,20 +204,6 @@ def is_palindrome(string):
 
     return True
 
-def get_n_largest_link(lst,n):
-    n_largest = None
-    #explore the list creating a linked list size n with the largest
-    #insert them ordering them without duplicating
-    #start a largest var with the first element of the list
-    #insert it to the linked list
-    #start a for cicle through the list
-    #if the len of list is less than n 
-    # insert i[i] it in the right place of the list to keep it ordered
-
-    #finally return the n_largest from the list
-
-    return n_largest
-
 def get_n_largest(array, n):
     """First solution, O(N Log N) time O(n) space"""
     if not array or n > len(array):
@@ -340,6 +326,76 @@ def pairs_with_given_sum(lst, target_sum):
             helper[other_pair_key] = 0
 
     return pairs
+
+
+def two_sum_pairs(lst, k):
+    '''
+        Return a list of tuples that add to the given k
+        input: lst = [3,3,2,4,1,5]
+        output: [(3,3),(4,2),(5,1)]
+    '''
+    if not lst:
+        return []
+    
+    values = {}
+    for val in lst:
+        if val not in values:
+            values[val] = 1
+        else:
+            values[val] += 1
+
+    result = []
+    for val in values.keys():
+        diff = k-val
+        if diff not in values or (diff == val and values[diff] <2):
+            continue
+        if values[diff]<1 or values[val] < 1:
+            continue
+        result.append((val,diff))
+        values[diff] -= 1
+        values[val] -= 1
+
+    return result
+
+def two_sum_pairs_ordered_list(lst,k):
+    ini = 0
+    end = len(lst)-1
+    result = []
+    while(ini<end):
+        suma = lst[ini] + lst[end]
+        if suma == k:
+            result.append((lst[ini],lst[end]))
+            ini += 1
+            end -= 1
+        elif suma > k:
+            end -= 1
+        else:
+            ini += 1
+
+    return result
+
+def three_sum(nums):
+    if not nums:
+        return []
+
+    nums.sort()
+    last = len(nums) -1
+    result = set()
+    for i in range(last):
+        ini = i+1
+        end = last
+        while ini < end:
+            add = nums[i]+nums[ini]+nums[end]
+            if add == 0:
+                result.add((nums[i],nums[ini],nums[end]))
+                ini += 1
+                end -= 1
+            elif add < 0:
+                ini += 1
+            else:
+                end -= 1
+
+    return list(result)
 
 def merge_ordered_lists(list1, list2):
     if not list1:

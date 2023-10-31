@@ -1,4 +1,4 @@
-from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array, moveZeroes, two_sum, isValidSudoku, has_word
+from algorithm_practice.arrays_algorithms import merge,intersect, intersect_sorted, add_one_int_array, moveZeroes, two_sum, isValidSudoku, has_word, two_sum_pairs, two_sum_pairs_ordered_list, three_sum
 
 def test_merge():
     nums1 = [1,2,3,0,0,0]
@@ -143,3 +143,38 @@ def test_has_word_mucho_false():
     s = "noestamuybieno"
 
     assert not has_word(s,word)
+
+def test_two_sum_pairs_all_positive():
+    lst = [3,3,2,4,1,5]
+
+    result = two_sum_pairs(lst, 6)
+
+    assert len(result)==3
+    assert (3,3) in result
+    assert (2,4) in result or (4,2) in result
+    assert (5,1) in result or (1,5) in result
+
+def test_two_sum_pairs_negatives():
+    lst = [1,3,5,-1,-2,9]
+
+    result = two_sum_pairs(lst,0)
+
+    assert len(result) == 1
+    assert result == [(1,-1)]
+
+def test_two_sum_pairs_ordered_list_all_positive():
+    lst = [3,3,2,4,1,5]
+    lst.sort()
+    result = two_sum_pairs_ordered_list(lst, 6)
+
+    assert len(result)==3
+    assert (3,3) in result
+    assert (2,4) in result or (4,2) in result
+    assert (5,1) in result or (1,5) in result
+
+def test_three_sum_weird_case():
+    nums = [-1,0,1,2,-1,-4,-2,-3,3,0,4]
+
+    result = three_sum(nums)
+
+    assert len(result) == 9
