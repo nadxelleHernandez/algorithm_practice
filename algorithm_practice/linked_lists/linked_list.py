@@ -117,3 +117,26 @@ class LinkedList:
         shifted.next = None
 
         return self.head
+    
+    def hasCycle(self):
+        if not self.head:
+            return False
+
+        if not self.head.next:
+            return False
+
+        if self.head.next == self.head:
+            return True
+
+        slow = self.head
+        fast = self.head
+
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+            
+        return False
+        
+
