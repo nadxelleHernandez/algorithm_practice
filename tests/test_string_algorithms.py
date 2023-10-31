@@ -43,3 +43,10 @@ def test_reverse_words_spaces_in_both_ends():
     r = reverseWords(s)
 
     assert r == "world hello"
+
+def test_revesrse_words_spaces_in_the_middle():
+    s = "the sky    is   blue"
+
+    r = reverseWords(s)
+
+    assert r == "blue is sky the"
