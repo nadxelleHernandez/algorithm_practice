@@ -1,4 +1,4 @@
-from algorithm_practice.arrays_algorithms import reshape_matrix
+from algorithm_practice.matrix_algorithms import reshape_matrix
 
 
 def test_cannot_reshape():

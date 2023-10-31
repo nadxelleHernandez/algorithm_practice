@@ -1,5 +1,6 @@
 from collections.abc import Iterable 
 from collections import Counter 
+import math
 
 '''
 Given two arrays, create your own concatenation function. 
@@ -462,65 +463,6 @@ def merge(nums1, m: int, nums2, n: int) -> None:
             j = j - 1
             res_index = res_index - 1
 
-def reshape_matrix(matrix, r, c):
-    """You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing the number of rows and number of columns of the wanted reshaped matrix, respectively.
-        The reshaped matrix need to be filled with all the elements of the original matrix in the same row-traversing order as they were.
-        If the 'reshape' operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.
-            Example 1:
-            Input: 
-            nums = 
-            [[1,2],
-            [3,4]]
-            r = 1, c = 4
-
-            Output: 
-            [[1,2,3,4]]"""
-
-    if not matrix:
-        return []
-
-    if r <= 0 or c <=0:
-        return matrix
-
-    total_elements = 0
-    is_matrix = True
-    if type(matrix[0]) is list:
-        total_elements = len(matrix) * len(matrix[0])
-    else:
-        total_elements = len(matrix)
-        is_matrix = False
-
-    if r * c != total_elements:
-        return matrix
-
-    i = 0
-    actual_row = []
-    new_matrix = []
-    if is_matrix:
-        for row in matrix:
-            for col in row:
-                if i < c:
-                    actual_row.append(col)
-                    i += 1
-                else:
-                    new_matrix.append(actual_row)
-                    actual_row = list()
-                    actual_row.append(col)
-                    i = 1
-    else:
-        for col in matrix:
-            if i < c:
-                actual_row.append(col)
-                i += 1
-            else:
-                new_matrix.append(actual_row)
-                actual_row = list()
-                actual_row.append(col)
-                i = 1
-                
-    new_matrix.append(actual_row)
-    return new_matrix
-
 def kth_missing_positive_number(array, k):
     """Given an array arr of positive integers sorted in a strictly increasing order, and an integer k.
     Find the kth positive integer that is missing from this array. 
@@ -929,7 +871,6 @@ def has_word(s: str, word: str):
     return False
     
 
-
 def duplicates_within_k(numbers, k): 
     '''
     INPUT: list of integers and integer k
@@ -960,4 +901,31 @@ def duplicates_within_k(numbers, k):
 
     return False
 
+def longestConsecutive_no_sorting(nums) -> int:
+    if not nums:
+        return 0
+    
+    max = -math.inf
+    for num in nums:
+        if num > max:
+            max = num
 
+    length = len(nums)
+
+    nums_set = set(nums)
+    longest_sub = 1
+    for num in nums_set:
+        if num-1 in nums_set:  #we already went through that secuence
+            continue 
+        consecutive = 1
+        while num < max:
+            num += 1
+            if num in nums_set:
+                consecutive += 1
+            else:
+                break   
+
+        if consecutive > longest_sub:
+            longest_sub = consecutive
+
+    return longest_sub
