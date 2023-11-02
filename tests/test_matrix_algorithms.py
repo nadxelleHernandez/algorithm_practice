@@ -1,4 +1,4 @@
-from algorithm_practice.matrix_algorithms import rotate_90, printSpiral
+from algorithm_practice.matrix_algorithms import rotate_90, printSpiral,exist_word
 
 def test_rotate_90_4x4_matrix():
     matrix = [[1,2,3],
@@ -44,3 +44,28 @@ def test_spiral_matrix_1x1():
     result = printSpiral(matrix)
 
     assert result == [1]
+
+def test_word_in_board_exist_valid_word_dublicate_continuous_characters():
+    board = [["A","B","C","E"], ["S","F","C","S"],["A","D","E","E"]]
+    word = "ABCCED"
+
+    assert exist_word(board,word)
+
+def test_word_in_board_exist_valid_word_at_the_edge():
+    board = [["A","B","C","E"], ["S","F","C","S"],["A","D","E","E"]]
+    word = "SEE"
+
+    assert exist_word(board,word)
+
+def test_word_in_board_exist_not_there():
+    board = [["A","B","C","E"], ["S","F","C","S"],["A","D","E","E"]]
+    word = "ABCB"
+
+    assert not exist_word(board,word)
+
+def test_word_in_board_exist_2x2_board():
+    board = [["a","b"],
+             ["c","d"]]
+    word = "acdb"
+
+    assert exist_word(board,word)

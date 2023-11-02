@@ -157,3 +157,56 @@ def reshape_matrix(matrix, r, c):
                 
     new_matrix.append(actual_row)
     return new_matrix
+
+def find(word, current, word_len, row, col, board, max_row, max_col) -> bool:
+    if row < 0 or row>= max_row or col<0 or col>=max_col or current>=word_len or board[row][col]!=word[current]:
+        return False
+    
+    if current == word_len - 1:
+        return True
+    
+    temp = board[row][col]
+    board[row][col] = -1
+    
+    if find(word,current+1,word_len,row,col+1,board,max_row,max_col):
+        return True
+    if find(word,current+1,word_len,row,col-1,board,max_row,max_col):
+        return True
+    if find(word,current+1,word_len,row+1,col,board,max_row,max_col):
+        return True
+    if find(word,current+1,word_len,row-1,col,board,max_row,max_col):
+        return True
+    
+    board[row][col] = temp
+    return False
+
+def exist_word(board, word)->bool:
+    '''
+    Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+    Input: board = [["A","B","C","E"],
+                    ["S","F","C","S"],
+                    ["A","D","E","E"]], 
+        word = "ABCCED"
+    Output: true
+
+    Input: board = [["A","B","C","E"],
+                    ["S","F","C","S"],
+                    ["A","D","E","E"]]
+        word = "SEE"
+    Output: true
+    '''
+    if not board or not word:
+        return False
+    
+    max_row = len(board)
+    max_col = len(board[0])
+    word_len = len(word)
+    first_char = word[0]
+    for row in range(max_row):
+        for col in range(max_col):
+            if board[row][col] == first_char:
+                current = 0
+                if find(word,current,word_len,row,col,board,max_row,max_col):
+                    return True
+
+    return False
