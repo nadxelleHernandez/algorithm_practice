@@ -929,3 +929,39 @@ def longestConsecutive_no_sorting(nums) -> int:
             longest_sub = consecutive
 
     return longest_sub
+
+
+#This is not a dynamic programing problem, because the subarray can be any size. Therefore, max continguos sum is the max sum of the numbers
+def max_contiguous_sum(arr):
+    '''
+    INPUT: 1-dimensional array with integers which can be either positive or negative
+    OUTPUT: int, which is the maximum contiguous subarray sum
+
+    Example input:
+    [-2, -3, 4, -1, -2, 1, 5, -3]
+
+    Example output:
+    7 (from index 2-6)
+    '''
+
+    if not arr:
+        return 0
+    
+    max_sum = arr[0]
+    length = len(arr)
+
+    if length == 1:
+        return max_sum
+
+    i = 0
+    sum = 0
+
+    while i < length:
+        sum += arr[i]
+        if max_sum < sum:
+            max_sum = sum
+        if sum < 0:
+            sum = 0
+        i+=1
+
+    return max_sum

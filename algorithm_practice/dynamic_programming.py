@@ -81,39 +81,31 @@ def longest_common_subsequence(str1, str2, memo=None):
 
     return result
 
-def max_contiguous_sum(arr):
+def max_sum_subarray_k(arr,k):
     '''
-    INPUT: 1-dimensional array with integers which can be either positive or negative
-    OUTPUT: int, which is the maximum contiguous subarray sum
+    Given an array of integers and a number k, find the maximum sum of a subarray of size k. 
+        Input  : arr[] = {100, 200, 300, 400},  k = 2
+        Output : 700
 
-    Example input:
-    [-2, -3, 4, -1, -2, 1, 5, -3]
-
-    Example output:
-    7 (from index 2-6)
+        Input  : arr[] = {1, 4, 2, 10, 23, 3, 1, 0, 20}, k = 4 
+        Output : 39
     '''
-    if not arr:
-        return 0
-    
+
+    left = 0
+    right = 1
     max_sum = arr[0]
-    length = len(arr)
-
-    if length == 1:
-        return max_sum
-
-    i = 1
-    j = 0
-    sum = 0
-
-    while j < length:
-        sum += arr[j]
-        if max_sum < sum:
-            max_sum = sum
-        if sum < 0:
-            sum = 0
-        j+=1
+    suma = arr[0]
+    while right<len(arr):
+        suma += arr[right]
+        max_sum = max(max_sum,suma)
+        window_size = right-left+1
+        if window_size >= k:
+            suma -= arr[left]
+            left+= 1
+        right+=1
 
     return max_sum
+
 
 def get_max_subarray_with_k_substitutions(s:str, k:int)->int:
     '''
@@ -158,21 +150,6 @@ def get_max_subarray_with_k_substitutions(s:str, k:int)->int:
         right += 1
 
     return longest
-
-
-    
-
-
-def get_max_sum_subarray_k(arr, k):
-    '''
-    Given an array of integers and a number k, find the maximum sum of a subarray of size k. 
-        Input  : arr[] = {100, 200, 300, 400},  k = 2
-        Output : 700
-
-        Input  : arr[] = {1, 4, 2, 10, 23, 3, 1, 0, 20}, k = 4 
-        Output : 39
-    '''
-    pass
 
 def get_ugly_number(n):
     '''

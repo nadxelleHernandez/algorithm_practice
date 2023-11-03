@@ -1,4 +1,5 @@
-from algorithm_practice.dynamic_programming import longest_common_subsequence, max_contiguous_sum, newman_conway, minimum_sub_list_length
+from algorithm_practice.dynamic_programming import longest_common_subsequence, newman_conway, minimum_sub_list_length
+from algorithm_practice.arrays_algorithms import max_contiguous_sum
 
 def test_minimum_sub_list_length():
     arr = [3, 2, 5, 8, 12, 1]
@@ -74,4 +75,11 @@ def test_max_contiguous_sum_valid_array():
     result = max_contiguous_sum(arr)
 
     assert result == 7
+
+def test_max_contiguous_sum_valid_array_smallest():
+    arr = [2,-8,3,2,-5,4,-10]
+
+    result = max_contiguous_sum(arr)
+
+    assert result == 5
 
